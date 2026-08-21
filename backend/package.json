@@ -1,0 +1,66 @@
+{
+  "name": "medmatch-backend",
+  "version": "1.0.0",
+  "description": "MedMatch AI - Autonomous Healthcare Procurement Backend",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "rimraf dist && tsc",
+    "start": "node dist/server.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --detectOpenHandles --forceExit",
+    "lint": "tsc --noEmit",
+    "seed": "ts-node-dev --transpile-only src/seed/seed.ts",
+    "x402:check": "tsx src/scripts/x402-check.ts",
+    "x402:unpaid": "tsx src/scripts/x402-unpaid.ts",
+    "x402:paid": "tsx src/scripts/x402-paid.ts",
+    "x402:agent": "tsx src/scripts/x402-agent.ts",
+    "security:check": "tsx src/scripts/security-check.ts"
+  },
+  "keywords": [
+    "medmatch",
+    "healthcare",
+    "procurement",
+    "ai-agent",
+    "firebase",
+    "x402",
+    "algorand"
+  ],
+  "author": "MedMatch AI Team",
+  "license": "MIT",
+  "dependencies": {
+    "@x402/avm": "^2.23.0",
+    "@x402/core": "^2.23.0",
+    "@x402/express": "^2.23.0",
+    "@x402/extensions": "^2.23.0",
+    "@x402/fetch": "^2.23.0",
+    "algosdk": "^3.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.1.0",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0",
+    "tsx": "^4.23.12",
+    "uuid": "^11.0.5",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.20.1",
+    "@types/supertest": "^6.0.2",
+    "@types/uuid": "^10.0.0",
+    "jest": "^29.7.0",
+    "rimraf": "^6.0.1",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "type": "commonjs"
+}

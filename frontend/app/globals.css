@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-silver: #F2F4F3;
+    --bg-soft-green: #E8F1EC;
+    --bg-sage: #DDE9E2;
+    --bg-soft-silver: #ECEFED;
+    --bg-main: #F2F4F3;
+    --bg-card: #ffffff;
+    --border-color: #e2e8f0;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --primary: #0f2744;
+    --primary-hover: #0a1b30;
+    --secondary: #0d9488;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #F2F4F3 0%, #E8F1EC 50%, #ECEFED 100%);
+    background-attachment: fixed;
+    color: #0f172a;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  /* Clean subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #E8F1EC;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+}
+
+/* Background Canvas Utilities */
+.bg-canvas {
+  background: linear-gradient(135deg, #F2F4F3 0%, #E8F1EC 50%, #ECEFED 100%);
+}
+
+.bg-canvas-soft {
+  background: linear-gradient(135deg, #F2F4F3 0%, #E8F1EC 100%);
+}
+
+.card-clean {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
+}
+
+.table-clean {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table-clean th {
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  background-color: #F2F4F3;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.table-clean td {
+  padding: 0.875rem 1rem;
+  font-size: 0.875rem;
+  color: #1e293b;
+  border-bottom: 1px solid #E8F1EC;
+}
+
+.table-clean tr:hover td {
+  background-color: #E8F1EC;
+}

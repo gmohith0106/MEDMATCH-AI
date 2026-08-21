@@ -1,0 +1,99 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check authentication
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // User profile: users can read their own profile, only backend admin can write
+    match /users/{userId} {
+      allow read: if isAuthenticated() && request.auth.uid == userId;
+      allow write: if false; // All updates handled through backend API
+    }
+    
+    // Hospitals: Read-only for authenticated members, write via backend
+    match /hospitals/{hospitalId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    // Inventory and Usage
+    match /inventory/{inventoryId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    match /inventoryUsage/{usageId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    // Forecasts & Shortages
+    match /forecasts/{forecastId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    match /shortages/{shortageId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    // Suppliers & Analyses
+    match /suppliers/{supplierId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    match /supplierAnalyses/{analysisId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    // Agent Runs, Steps, Events (Protected audit trail)
+    match /agentRuns/{runId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    match /agentSteps/{stepId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    match /agentEvents/{eventId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    // Payments: Strictly read-only to authenticated users, all modifications via backend
+    match /payments/{paymentId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    // Recommendations & Procurement Requests
+    match /recommendations/{recommendationId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    match /procurementRequests/{requestId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    // Activities & Notifications
+    match /activities/{activityId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+    
+    match /notifications/{notificationId} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+  }
+}

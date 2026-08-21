@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "lib": ["ES2022"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "noImplicitAny": true,
+    "noUncheckedIndexedAccess": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@x402/core/server": ["node_modules/@x402/core/dist/cjs/server/index"],
+      "@x402/core/client": ["node_modules/@x402/core/dist/cjs/client/index"],
+      "@x402/core/types": ["node_modules/@x402/core/dist/cjs/types/index"],
+      "@x402/core/facilitator": ["node_modules/@x402/core/dist/cjs/facilitator/index"],
+      "@x402/core": ["node_modules/@x402/core/dist/cjs/index"],
+      "@x402/avm/exact/server": ["node_modules/@x402/avm/dist/cjs/exact/server/index"],
+      "@x402/avm/exact/client": ["node_modules/@x402/avm/dist/cjs/exact/client/index"],
+      "@x402/avm/exact/facilitator": ["node_modules/@x402/avm/dist/cjs/exact/facilitator/index"],
+      "@x402/avm": ["node_modules/@x402/avm/dist/cjs/index"],
+      "@x402/express": ["node_modules/@x402/express/dist/cjs/index"],
+      "@x402/fetch": ["node_modules/@x402/fetch/dist/cjs/index"],
+      "@x402/extensions/bazaar": ["node_modules/@x402/extensions/dist/cjs/bazaar/index"],
+      "@x402/extensions": ["node_modules/@x402/extensions/dist/cjs/index"]
+    },
+    "types": ["node", "jest"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "tests"]
+}
