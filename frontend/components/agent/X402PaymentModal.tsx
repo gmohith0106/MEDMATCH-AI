@@ -96,7 +96,7 @@ export function X402PaymentModal() {
         sender,
         receiver: rcvr,
         amount: 1000, // 0.001 ALGO (6 decimals)
-        note: new TextEncoder().encode(`x402:${targetPaymentId}`),
+        note: new TextEncoder().encode(`x402:${targetPaymentId} - MedMatch Autonomous Settlement`),
         suggestedParams
       });
 
