@@ -62,7 +62,7 @@ export function X402PaymentModal() {
       if (!targetPaymentId) {
         const req = await requestPayment({
           amount: 0.001,
-          asset: 'USDC',
+          asset: 'ALGO',
           currency: 'USD',
           purpose: 'Autonomous Agent Tier-1 Supplier Intelligence Oracle Fee',
           resource: '/api/paid/supplier-intelligence'
@@ -92,11 +92,10 @@ export function X402PaymentModal() {
       const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
       const suggestedParams = await algodClient.getTransactionParams().do();
 
-      const txn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
+      const txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
         sender,
         receiver: rcvr,
-        amount: 1000, // 0.001 USDC (6 decimals)
-        assetIndex: 10458941,
+        amount: 1000, // 0.001 ALGO (6 decimals)
         suggestedParams
       });
 
@@ -198,7 +197,7 @@ export function X402PaymentModal() {
               <span className="text-xs text-slate-500 font-semibold">Authoritative Price:</span>
               <div className="text-right">
                 <span className="font-extrabold text-base text-slate-900">
-                  0.001 USDC
+                  0.001 ALGO
                 </span>
                 <span className="text-[11px] text-slate-500 font-mono ml-1">
                   ($0.001 USD)
@@ -312,7 +311,7 @@ export function X402PaymentModal() {
                 </>
               ) : (
                   <>
-                    <span>Pay 0.001 USDC</span>
+                    <span>Pay 0.001 ALGO</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </>
               )}
