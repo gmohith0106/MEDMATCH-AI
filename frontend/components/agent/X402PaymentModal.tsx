@@ -105,7 +105,7 @@ export function X402PaymentModal() {
 
       // Submit to network
       const sendTxRes = await algodClient.sendRawTransaction(signedTxn[0]).do();
-      const txId = sendTxRes.txId;
+      const txId = sendTxRes.txid;
 
       // Tell backend we submitted it
       await submitPayment({
