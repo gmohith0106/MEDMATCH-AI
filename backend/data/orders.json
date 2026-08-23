@@ -222,5 +222,53 @@
     "explorer_url": "https://lora.algokit.io/testnet/transaction/QOOBRVQMX4HW5QZ2EGLQDQCQTKRF3UP3JKDGKYPCXMI6AVV35KQA",
     "created_at": "2026-08-23T10:38:19.010Z",
     "hospital_id": "hospital-citycare-001"
+  },
+  {
+    "id": "ord-f84ce7c3",
+    "item": "inv-surgical-gloves-002",
+    "itemName": "Surgical Gloves (Sterile, Latex-Free)",
+    "supplier": "supp-medisupply-001",
+    "supplierName": "MediSupply",
+    "qty": 4148,
+    "unitPrice": 9.5,
+    "total_price": 39406,
+    "status": "SETTLED",
+    "reasoning": "MediSupply ranks highest in the certified supplier catalog (Score: 96.7/100) based on optimal combined price ($9.50/unit), fast delivery (2 days), high reliability (98%), and strong availability (96%).",
+    "txn_id": "QOOBRVQMX4HW5QZ2EGLQDQCQTKRF3UP3JKDGKYPCXMI6AVV35KQA",
+    "explorer_url": "https://lora.algokit.io/testnet/transaction/QOOBRVQMX4HW5QZ2EGLQDQCQTKRF3UP3JKDGKYPCXMI6AVV35KQA",
+    "created_at": "2026-08-23T10:43:27.959Z",
+    "hospital_id": "hospital-citycare-001"
+  },
+  {
+    "id": "ord-e793008a",
+    "item": "inv-n95-masks-001",
+    "itemName": "N95 Masks",
+    "supplier": "supp-medisupply-001",
+    "supplierName": "MediSupply",
+    "qty": 324,
+    "unitPrice": 9.5,
+    "total_price": 3078,
+    "status": "SETTLED",
+    "reasoning": "MediSupply ranks highest in the certified supplier catalog (Score: 96.7/100) based on optimal combined price ($9.50/unit), fast delivery (2 days), high reliability (98%), and strong availability (96%).",
+    "txn_id": "QOOBRVQMX4HW5QZ2EGLQDQCQTKRF3UP3JKDGKYPCXMI6AVV35KQA",
+    "explorer_url": "https://lora.algokit.io/testnet/transaction/QOOBRVQMX4HW5QZ2EGLQDQCQTKRF3UP3JKDGKYPCXMI6AVV35KQA",
+    "created_at": "2026-08-23T10:44:08.375Z",
+    "hospital_id": "hospital-citycare-001"
+  },
+  {
+    "id": "ord-9d93c9ba",
+    "item": "inv-n95-masks-001",
+    "itemName": "N95 Masks",
+    "supplier": "supp-medisupply-001",
+    "supplierName": "MediSupply",
+    "qty": 324,
+    "unitPrice": 9.5,
+    "total_price": 3078,
+    "status": "SETTLED",
+    "reasoning": "MediSupply ranks highest in the certified supplier catalog (Score: 96.7/100) based on optimal combined price ($9.50/unit), fast delivery (2 days), high reliability (98%), and strong availability (96%).",
+    "txn_id": "QOOBRVQMX4HW5QZ2EGLQDQCQTKRF3UP3JKDGKYPCXMI6AVV35KQA",
+    "explorer_url": "https://lora.algokit.io/testnet/transaction/QOOBRVQMX4HW5QZ2EGLQDQCQTKRF3UP3JKDGKYPCXMI6AVV35KQA",
+    "created_at": "2026-08-23T10:44:44.218Z",
+    "hospital_id": "hospital-citycare-001"
   }
 ]
