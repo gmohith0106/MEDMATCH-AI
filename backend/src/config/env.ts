@@ -10,7 +10,7 @@ const envSchema = z.object({
   // Core Server
   PORT: z.string().default('4000').transform((val) => parseInt(val, 10)),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-  FRONTEND_URL: z.string().default('https://frontend-nu-six-grq087d9vf.vercel.app'),
+  FRONTEND_URL: z.string().default('https://frontend-ay0rbek93-gmohith0106s-projects.vercel.app'),
 
   // Execution Modes
   PAYMENT_MODE: z.enum(['x402', 'mock']).default('x402'),
