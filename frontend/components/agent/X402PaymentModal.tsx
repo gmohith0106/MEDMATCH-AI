@@ -123,10 +123,10 @@ export function X402PaymentModal() {
         setTransactionId(result.transactionId || result.payment?.transactionId);
         setReceiverAddress(result.receiverAddress || result.payment?.receiverAddress);
 
-        setTimeout(async () => {
+        setTimeout(() => {
           setIsProcessing(false);
-          await continuePaymentFlow();
-        }, 1000);
+          continuePaymentFlow(txId);
+        }, 4000);
       } else if (result?.status === 'PAYMENT_CONFIGURATION_REQUIRED' || result?.status === 'PAYMENT_SIGNER_NOT_CONFIGURED') {
         setPaymentStatus('PAYMENT_CONFIGURATION_REQUIRED');
         setErrorMessage('USER ACTION REQUIRED: Add funded Account 1 mnemonic (AVM_MNEMONIC) in backend .env to complete on-chain TestNet settlement.');
@@ -232,6 +232,14 @@ export function X402PaymentModal() {
           </div>
 
           {/* Processing / Verifying Feedback */}
+          {paymentStatus === 'VERIFIED' && (
+            <div className="p-4 rounded-xl bg-teal-50 border border-teal-200 flex flex-col items-center justify-center">
+              <p className="text-teal-700 text-sm font-bold flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> Payment Confirmed!</p>
+              {transactionId && (
+                <p className="text-teal-600 text-xs mt-2 font-mono break-all text-center">TxID: {transactionId}</p>
+              )}
+            </div>
+          )}
           {paymentStatus === 'PAYMENT_PROCESSING' && (
             <div className="p-3.5 rounded-xl bg-pink-50 border border-pink-200 flex items-center gap-3">
               <Loader2 className="w-5 h-5 text-pink-600 animate-spin shrink-0" />
