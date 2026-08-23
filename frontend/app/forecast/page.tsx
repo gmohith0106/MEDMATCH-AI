@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -95,7 +95,7 @@ export default function ForecastPage() {
           <select
             value={selectedItem}
             onChange={(e) => setSelectedItem(e.target.value)}
-            className="bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-1 focus:ring-teal-500"
+            className="bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-1 focus:ring-pink-500"
           >
             {forecastData.map((f) => (
               <option key={f.key} value={f.key}>
@@ -110,10 +110,10 @@ export default function ForecastPage() {
       <div className="bg-white rounded-lg border border-slate-200 p-6 shadow-sm space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
           <div className="flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-teal-600" />
+            <TrendingUp className="w-5 h-5 text-pink-600" />
             <div>
               <h3 className="text-sm font-bold text-slate-900">
-                {activeItemData.name} — Historical Consumption vs. 7-Day Projected Demand
+                {activeItemData.name} â€” Historical Consumption vs. 7-Day Projected Demand
               </h3>
               <p className="text-xs text-slate-500">Daily burn rate tracking against remaining stockout margin</p>
             </div>
@@ -125,7 +125,7 @@ export default function ForecastPage() {
               <span className="text-slate-600">Past 7 Days</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-3 h-3 rounded-full bg-teal-600" />
+              <span className="w-3 h-3 rounded-full bg-pink-600" />
               <span className="text-slate-900 font-semibold">Forecast (Next 7 Days)</span>
             </div>
             <div className="flex items-center gap-1.5">
@@ -155,7 +155,7 @@ export default function ForecastPage() {
             {/* Deficit Zone Highlight on right side */}
             <rect x="420" y="30" width="360" height="180" fill="#fff1f2" opacity="0.4" />
             <line x1="420" y1="20" x2="420" y2="210" stroke="#0d9488" strokeWidth="1.5" strokeDasharray="3 3" />
-            <text x="425" y="25" className="text-[10px] fill-teal-700 font-bold">TODAY (INVENTORY: {activeItemData.currentStock.toLocaleString()})</text>
+            <text x="425" y="25" className="text-[10px] fill-pink-700 font-bold">TODAY (INVENTORY: {activeItemData.currentStock.toLocaleString()})</text>
 
             {/* Past 7 Days Line (Slate) */}
             <polyline
@@ -248,7 +248,7 @@ export default function ForecastPage() {
                       {item.expectedDeficit > 0 ? (
                         <span className="text-rose-600">-{item.expectedDeficit.toLocaleString()}</span>
                       ) : (
-                        <span className="text-emerald-600">Surplus</span>
+                        <span className="text-slate-500">Surplus</span>
                       )}
                     </td>
                     <td className="px-4 py-3.5 text-center font-medium text-slate-700">
@@ -267,7 +267,7 @@ export default function ForecastPage() {
                           selectTargetItemPreset(item.key);
                           router.push('/procurement');
                         }}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-pink-600 hover:bg-pink-700 text-white text-xs font-semibold transition-colors"
                       >
                         <Bot className="w-3.5 h-3.5" />
                         <span>Procure</span>

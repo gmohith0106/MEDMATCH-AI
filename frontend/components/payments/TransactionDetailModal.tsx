@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { X402PaymentRecord } from '@/types/payment';
@@ -43,7 +43,7 @@ export function TransactionDetailModal({
       case 'PAYMENT_VERIFIED':
       case 'VERIFIED':
         return (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-400/10 text-slate-500 dark:text-slate-400 border border-slate-400/20">
             <ShieldCheck className="w-3.5 h-3.5" />
             Settled On-Chain
           </span>
@@ -122,7 +122,7 @@ export function TransactionDetailModal({
             <div>
               <p className="text-xs font-medium text-zinc-400">Amount</p>
               <p className="text-base font-bold text-zinc-900 dark:text-white mt-0.5">
-                ${payment.amount?.toFixed(2) || '0.02'} USD
+                ${payment.amount?.toFixed(2) || '0.001'} USD
               </p>
               <p className="text-[11px] text-pink-600 dark:text-pink-400 font-mono font-medium">
                 {payment.amount} {payment.asset || 'ALGO'}
@@ -147,7 +147,7 @@ export function TransactionDetailModal({
               <p className="text-base font-bold text-zinc-900 dark:text-white mt-0.5 font-mono">
                 {payment.confirmedRound || payment.blockNumber ? `#${payment.confirmedRound || payment.blockNumber}` : 'Pending'}
               </p>
-              <p className="text-[11px] text-zinc-500 font-medium">Consensus Block</p>
+              <p className="text-[11px] text-zinc-500 font-medium">Lora confirmation round</p>
             </div>
           </div>
 
@@ -169,8 +169,8 @@ export function TransactionDetailModal({
                 >
                   {copiedField === 'tx' ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span className="text-emerald-600">Copied</span>
+                      <Check className="w-3.5 h-3.5 text-slate-500" />
+                      <span className="text-slate-500">Copied</span>
                     </>
                   ) : (
                     <>
@@ -200,7 +200,7 @@ export function TransactionDetailModal({
                     className="p-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 rounded transition-colors"
                   >
                     {copiedField === 'sender' ? (
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <Check className="w-3.5 h-3.5 text-slate-500" />
                     ) : (
                       <Copy className="w-3.5 h-3.5" />
                     )}
@@ -224,7 +224,7 @@ export function TransactionDetailModal({
                     className="p-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 rounded transition-colors"
                   >
                     {copiedField === 'receiver' ? (
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <Check className="w-3.5 h-3.5 text-slate-500" />
                     ) : (
                       <Copy className="w-3.5 h-3.5" />
                     )}
@@ -256,7 +256,7 @@ export function TransactionDetailModal({
             {payment.verifiedAt && (
               <div className="flex items-center justify-between text-xs">
                 <span className="text-zinc-500 dark:text-zinc-400">Verified At</span>
-                <span className="font-medium text-emerald-600 dark:text-emerald-400">
+                <span className="font-medium text-slate-500 dark:text-slate-400">
                   {new Date(payment.verifiedAt).toLocaleString()}
                 </span>
               </div>
@@ -281,7 +281,7 @@ export function TransactionDetailModal({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300 hover:bg-pink-50 dark:hover:bg-pink-950/30 rounded-lg transition-colors"
               >
-                <span>View on Algorand Explorer</span>
+                <span>Verify confirmation on Lora</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             ) : (

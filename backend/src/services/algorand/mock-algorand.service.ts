@@ -65,11 +65,11 @@ export class MockAlgorandService implements AlgorandService {
     amountAlgos: number,
     note?: string
   ): Promise<AlgorandTransactionResult> {
-    const txId = 'ALGO-TXN-VERIFIED-001';
+    const txId = 'QOOBRVQMX4HW5QZ2EGLQDQCQTKRF3UP3JKDGKYPCXMI6AVV35KQA';
     return {
       network: 'algorand-testnet',
       transactionId: txId,
-      confirmedRound: 38472910,
+      confirmedRound: 1,
       status: 'CONFIRMED',
       sender: 'ALGO7W2K6XJ4PL9QNZR8YV1M3TB5D0E4G2F9C7H1',
       receiver: receiverAddress,

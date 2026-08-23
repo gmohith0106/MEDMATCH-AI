@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { ShieldCheck, AlertTriangle, TrendingDown, PiggyBank, Bot } from 'lucide-react';
@@ -43,7 +43,7 @@ export function KpiCards() {
     },
     {
       title: 'Potential Savings',
-      value: '₹18,450',
+      value: 'â‚¹18,450',
       badgeText: 'Estimated',
       badgeClass: 'bg-[#fff5f7] text-[#24324a] border border-[#ffc8d3]',
       valueColor: 'text-[#24324a]',

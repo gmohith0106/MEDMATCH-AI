@@ -1,0 +1,24 @@
+{
+  "spend_cap": 0.05,
+  "daily_spend_cap": 1,
+  "daily_spend_so_far": 0.14,
+  "approved_suppliers": [
+    "sup-medisupply-001",
+    "sup-caremed-002",
+    "sup-apex-003",
+    "MediSupply Healthcare Solutions",
+    "CareMed Logistics",
+    "Apex Medical Supplies"
+  ],
+  "approved_categories": [
+    "PPE",
+    "Protective Equipment",
+    "Consumables",
+    "IV Fluids",
+    "Pharmaceuticals"
+  ],
+  "agent_operating_wallet": "GD64YIY3TWGDMCNPP553DZPPR6LDUSFQOIJVFDPPXWEG3FVOJCCDBBHU5A",
+  "operating_wallet_balance_usdc": 50,
+  "auto_order_enabled": true,
+  "updated_at": "2026-08-23T06:48:16.668Z"
+}

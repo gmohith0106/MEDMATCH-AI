@@ -10,11 +10,11 @@ import {
 
 const router = Router();
 
-// Inventory Read: ADMIN, INVENTORY_STAFF, MANAGER
+// Inventory Read: ADMIN, INVENTORY_STAFF, MANAGER, PROCUREMENT_STAFF
 router.get(
   '/inventory',
   authenticateStaff,
-  requireRoles('ADMIN', 'INVENTORY_STAFF', 'MANAGER'),
+  requireRoles('ADMIN', 'INVENTORY_STAFF', 'MANAGER', 'PROCUREMENT_STAFF'),
   validateQuery(inventoryQuerySchema),
   InventoryController.getInventory
 );
@@ -22,14 +22,14 @@ router.get(
 router.get(
   '/inventory/:id',
   authenticateStaff,
-  requireRoles('ADMIN', 'INVENTORY_STAFF', 'MANAGER'),
+  requireRoles('ADMIN', 'INVENTORY_STAFF', 'MANAGER', 'PROCUREMENT_STAFF'),
   InventoryController.getInventoryById
 );
 
 router.get(
   '/inventory/:id/history',
   authenticateStaff,
-  requireRoles('ADMIN', 'INVENTORY_STAFF', 'MANAGER'),
+  requireRoles('ADMIN', 'INVENTORY_STAFF', 'MANAGER', 'PROCUREMENT_STAFF'),
   InventoryController.getInventoryHistory
 );
 

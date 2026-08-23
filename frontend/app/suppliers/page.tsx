@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -64,11 +64,11 @@ export default function SuppliersPage() {
       <div className="bg-white rounded-lg border border-slate-200 p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-teal-50 text-teal-700 border border-teal-200">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-pink-50 text-pink-700 border border-pink-200">
               <Truck className="w-3.5 h-3.5" />
               Verified Clinical Suppliers
             </span>
-            <span className="text-xs text-slate-400">•</span>
+            <span className="text-xs text-slate-400">â€¢</span>
             <span className="text-xs text-slate-500 font-medium">3 Contracted Partners</span>
           </div>
           <h2 className="text-xl font-bold text-slate-900 mt-1">Supplier Directory & Performance Scoring</h2>
@@ -79,7 +79,7 @@ export default function SuppliersPage() {
 
         <Link
           href="/procurement"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition-colors shadow-sm self-start md:self-auto"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold transition-colors shadow-sm self-start md:self-auto"
         >
           <Bot className="w-4 h-4" />
           <span>Launch Procurement</span>
@@ -92,13 +92,13 @@ export default function SuppliersPage() {
           <div
             key={supplier.id}
             className={`bg-white rounded-lg border p-5 shadow-sm space-y-4 flex flex-col justify-between ${
-              supplier.recommended ? 'border-teal-500 ring-1 ring-teal-500' : 'border-slate-200'
+              supplier.recommended ? 'border-pink-500 ring-1 ring-pink-500' : 'border-slate-200'
             }`}
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 {supplier.recommended ? (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-bold bg-teal-600 text-white">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-bold bg-pink-600 text-white">
                     <Star className="w-3 h-3 fill-current" />
                     TOP RECOMMENDED
                   </span>
@@ -107,7 +107,7 @@ export default function SuppliersPage() {
                     Contracted Supplier
                   </span>
                 )}
-                <span className="text-xs font-black text-teal-700">
+                <span className="text-xs font-black text-pink-700">
                   {supplier.overallScore} / 100
                 </span>
               </div>
@@ -124,7 +124,7 @@ export default function SuppliersPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-500">Stock Availability:</span>
-                  <span className="font-semibold text-emerald-700">{supplier.availability}</span>
+                  <span className="font-semibold text-slate-600">{supplier.availability}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-500">Delivery Lead Time:</span>
@@ -132,7 +132,7 @@ export default function SuppliersPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-500">Historical Reliability:</span>
-                  <span className="font-bold text-emerald-600">{supplier.reliability}</span>
+                  <span className="font-bold text-slate-500">{supplier.reliability}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-500">Certifications:</span>
@@ -143,7 +143,7 @@ export default function SuppliersPage() {
 
             <div className="pt-2 text-xs text-slate-500 flex items-center justify-between">
               <span>{supplier.fulfillmentHistory}</span>
-              <ShieldCheck className="w-4 h-4 text-teal-600" />
+              <ShieldCheck className="w-4 h-4 text-pink-600" />
             </div>
           </div>
         ))}
@@ -175,14 +175,14 @@ export default function SuppliersPage() {
                 <tr
                   key={s.id}
                   className={`hover:bg-slate-50/80 transition-colors ${
-                    s.recommended ? 'bg-teal-50/30' : ''
+                    s.recommended ? 'bg-pink-50/30' : ''
                   }`}
                 >
                   <td className="px-5 py-3.5 font-bold text-slate-900">
                     <div className="flex items-center gap-2">
                       <span>{s.name}</span>
                       {s.recommended && (
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-teal-600 text-white">
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-pink-600 text-white">
                           RECOMMENDED
                         </span>
                       )}
@@ -191,14 +191,14 @@ export default function SuppliersPage() {
                   <td className="px-4 py-3.5 text-right font-semibold text-slate-900">{s.unitPrice}</td>
                   <td className="px-4 py-3.5 text-center font-medium text-slate-800">{s.availability}</td>
                   <td className="px-4 py-3.5 text-center font-semibold text-slate-900">{s.deliveryTime}</td>
-                  <td className="px-4 py-3.5 text-center font-bold text-emerald-600">{s.reliability}</td>
+                  <td className="px-4 py-3.5 text-center font-bold text-slate-500">{s.reliability}</td>
                   <td className="px-4 py-3.5 text-center text-xs text-slate-700">{s.quality}</td>
-                  <td className="px-4 py-3.5 text-right font-black text-teal-700 text-sm">
+                  <td className="px-4 py-3.5 text-right font-black text-pink-700 text-sm">
                     {s.overallScore} / 100
                   </td>
                   <td className="px-5 py-3.5 text-center">
                     {s.recommended ? (
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-bold bg-teal-100 text-teal-800">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-bold bg-pink-100 text-pink-800">
                         Top Choice
                       </span>
                     ) : (

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -100,7 +100,7 @@ export function InventoryTable() {
             placeholder="Search medical item or category..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-md border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 bg-white"
+            className="w-full pl-10 pr-4 py-2 rounded-md border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 bg-white"
           />
         </div>
 
@@ -180,7 +180,7 @@ export function InventoryTable() {
                       {item.expectedDeficit > 0 ? (
                         <span className="text-rose-600">-{item.expectedDeficit.toLocaleString()}</span>
                       ) : (
-                        <span className="text-emerald-600">0 (Surplus)</span>
+                        <span className="text-slate-500">0 (Surplus)</span>
                       )}
                     </td>
                     <td className="px-4 py-3.5 text-center">
@@ -197,8 +197,8 @@ export function InventoryTable() {
                         </span>
                       )}
                       {!isCritical && !isWarning && (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-bold bg-slate-100 text-slate-600 border border-slate-300">
+                          <CheckCircle2 className="w-3 h-3 text-slate-500" />
                           HEALTHY
                         </span>
                       )}
@@ -214,7 +214,7 @@ export function InventoryTable() {
                         }}
                         className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-semibold transition-colors ${
                           isCritical
-                            ? 'bg-teal-600 hover:bg-teal-700 text-white shadow-sm'
+                            ? 'bg-pink-600 hover:bg-pink-700 text-white shadow-sm'
                             : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
                         }`}
                       >

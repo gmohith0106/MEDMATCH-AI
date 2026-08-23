@@ -67,7 +67,7 @@ export default function PaymentSuccessPage() {
 
   if (!payment || !isSettled) {
     return (
-      <div className="max-w-xl mx-auto my-8 bg-white rounded-xl border border-[#DDE9E2] shadow-sm p-8 text-center space-y-4">
+      <div className="max-w-xl mx-auto my-8 bg-white rounded-xl border border-[#cbd5e1] shadow-sm p-8 text-center space-y-4">
         <div className="w-12 h-12 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center mx-auto">
           <AlertCircle className="w-6 h-6" />
         </div>
@@ -120,7 +120,7 @@ export default function PaymentSuccessPage() {
   return (
     <div className="max-w-3xl mx-auto space-y-6 pb-12 animate-fadeIn">
       {/* 1. Header Banner & Success Indicator */}
-      <div className="bg-white rounded-xl border border-[#DDE9E2] p-8 shadow-sm text-center space-y-3">
+      <div className="bg-white rounded-xl border border-[#cbd5e1] p-8 shadow-sm text-center space-y-3">
         <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center mx-auto shadow-sm">
           <CheckCircle2 className="w-8 h-8" />
         </div>
@@ -147,7 +147,7 @@ export default function PaymentSuccessPage() {
       {/* 2. Three Clean Cards: Product Details, Supplier Details, Blockchain Details */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Product Details Card */}
-        <div className="bg-white rounded-xl border border-[#DDE9E2] p-6 shadow-sm space-y-3">
+        <div className="bg-white rounded-xl border border-[#cbd5e1] p-6 shadow-sm space-y-3">
           <div className="flex items-center justify-between pb-2 border-b border-slate-100">
             <span className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
               <Package className="w-3.5 h-3.5 text-teal-600" />
@@ -164,19 +164,19 @@ export default function PaymentSuccessPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-3 pt-1 text-xs">
-            <div className="p-2.5 rounded-lg bg-[#E8F1EC]/40 border border-[#DDE9E2]">
+            <div className="p-2.5 rounded-lg bg-[#f1f5f9]/40 border border-[#cbd5e1]">
               <span className="text-slate-500 text-[11px]">Required Qty</span>
               <p className="font-bold text-slate-900 mt-0.5">{product.requiredQuantity?.toLocaleString()} units</p>
             </div>
-            <div className="p-2.5 rounded-lg bg-[#E8F1EC]/40 border border-[#DDE9E2]">
+            <div className="p-2.5 rounded-lg bg-[#f1f5f9]/40 border border-[#cbd5e1]">
               <span className="text-slate-500 text-[11px]">Current Stock</span>
               <p className="font-bold text-slate-900 mt-0.5">{product.currentStock?.toLocaleString()} units</p>
             </div>
-            <div className="p-2.5 rounded-lg bg-[#E8F1EC]/40 border border-[#DDE9E2]">
+            <div className="p-2.5 rounded-lg bg-[#f1f5f9]/40 border border-[#cbd5e1]">
               <span className="text-slate-500 text-[11px]">7-Day Forecast</span>
               <p className="font-bold text-slate-900 mt-0.5">{product.forecastDemand?.toLocaleString()} units</p>
             </div>
-            <div className="p-2.5 rounded-lg bg-[#E8F1EC]/40 border border-[#DDE9E2]">
+            <div className="p-2.5 rounded-lg bg-[#f1f5f9]/40 border border-[#cbd5e1]">
               <span className="text-slate-500 text-[11px]">Expected Deficit</span>
               <p className="font-bold text-rose-600 mt-0.5">-{product.expectedDeficit?.toLocaleString()} units</p>
             </div>
@@ -184,7 +184,7 @@ export default function PaymentSuccessPage() {
         </div>
 
         {/* Supplier Details Card */}
-        <div className="bg-white rounded-xl border border-[#DDE9E2] p-6 shadow-sm space-y-3">
+        <div className="bg-white rounded-xl border border-[#cbd5e1] p-6 shadow-sm space-y-3">
           <div className="flex items-center justify-between pb-2 border-b border-slate-100">
             <span className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
               <Building2 className="w-3.5 h-3.5 text-teal-600" />
@@ -201,19 +201,19 @@ export default function PaymentSuccessPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-3 pt-1 text-xs">
-            <div className="p-2.5 rounded-lg bg-[#E8F1EC]/40 border border-[#DDE9E2]">
+            <div className="p-2.5 rounded-lg bg-[#f1f5f9]/40 border border-[#cbd5e1]">
               <span className="text-slate-500 text-[11px]">Unit Price</span>
               <p className="font-bold text-slate-900 mt-0.5">${supplier.unitPrice?.toFixed(2)}</p>
             </div>
-            <div className="p-2.5 rounded-lg bg-[#E8F1EC]/40 border border-[#DDE9E2]">
+            <div className="p-2.5 rounded-lg bg-[#f1f5f9]/40 border border-[#cbd5e1]">
               <span className="text-slate-500 text-[11px]">Delivery Time</span>
               <p className="font-bold text-emerald-700 mt-0.5">{supplier.deliveryTime || supplier.deliveryDays} Days (Safe)</p>
             </div>
-            <div className="p-2.5 rounded-lg bg-[#E8F1EC]/40 border border-[#DDE9E2]">
+            <div className="p-2.5 rounded-lg bg-[#f1f5f9]/40 border border-[#cbd5e1]">
               <span className="text-slate-500 text-[11px]">Reliability</span>
               <p className="font-bold text-slate-900 mt-0.5">{supplier.reliability}% Verified</p>
             </div>
-            <div className="p-2.5 rounded-lg bg-[#E8F1EC]/40 border border-[#DDE9E2]">
+            <div className="p-2.5 rounded-lg bg-[#f1f5f9]/40 border border-[#cbd5e1]">
               <span className="text-slate-500 text-[11px]">Stock Status</span>
               <p className="font-bold text-emerald-700 mt-0.5">Immediate Dispatch</p>
             </div>
@@ -222,7 +222,7 @@ export default function PaymentSuccessPage() {
       </div>
 
       {/* Blockchain Details Card */}
-      <div className="bg-white rounded-xl border border-[#DDE9E2] p-6 shadow-sm space-y-4">
+      <div className="bg-white rounded-xl border border-[#cbd5e1] p-6 shadow-sm space-y-4">
         <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div className="flex items-center gap-2">
             <CreditCard className="w-4 h-4 text-teal-600" />
@@ -279,7 +279,7 @@ export default function PaymentSuccessPage() {
               href={loraUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-[#DDE9E2] bg-[#F2F4F3] hover:bg-[#E8F1EC] text-teal-800 text-xs font-bold transition-colors"
+              className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-[#cbd5e1] bg-[#ffffff] hover:bg-[#f1f5f9] text-teal-800 text-xs font-bold transition-colors"
             >
               <span>View On-Chain Confirmation on Lora Explorer</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -292,7 +292,7 @@ export default function PaymentSuccessPage() {
       <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
         <Link
           href="/payments"
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-lg border border-[#DDE9E2] bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition-colors shadow-sm"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-lg border border-[#cbd5e1] bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition-colors shadow-sm"
         >
           <span>View Payment History</span>
         </Link>

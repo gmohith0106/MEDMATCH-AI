@@ -103,7 +103,7 @@ export class X402PaymentService implements PaymentService {
     const now = getCurrentIsoDate();
     const expiresAt = new Date(Date.now() + 15 * 60 * 1000).toISOString();
 
-    const amount = params.amount !== undefined ? params.amount : 0.02;
+    const amount = params.amount !== undefined ? params.amount : 0.001;
     const asset = params.asset || (env.X402_PAYMENT_ASSET as 'ALGO' | 'USDC') || 'USDC';
     const currency = params.currency || 'USD';
     const network = this.algorandService.getNetwork() || ALGORAND_TESTNET_CAIP2;

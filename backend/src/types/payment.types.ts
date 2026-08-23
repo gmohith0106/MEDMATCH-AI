@@ -116,6 +116,10 @@ export interface NormalizedPaymentResponse {
   id: string;
   status: PaymentStatus;
   transactionId?: string;
+  confirmedRound?: number;
+  blockNumber?: number;
+  verified: boolean;
+  verifiedAt?: string;
   amount: number;
   asset: string;
   network: string;

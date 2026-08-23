@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import {
@@ -94,7 +94,7 @@ export default function LogisticsPage() {
               1,482
             </div>
             <div className="text-[11px] font-medium text-[#8B1538] mt-1 flex items-center gap-1">
-              <span>↑ 12% vs last week</span>
+              <span>â†‘ 12% vs last week</span>
             </div>
           </div>
           <div className="w-10 h-10 rounded bg-[#E0F2FE] text-[#0F5B6E] flex items-center justify-center">
@@ -112,7 +112,7 @@ export default function LogisticsPage() {
               345
             </div>
             <div className="text-[11px] font-medium text-[#64748B] mt-1 flex items-center gap-1">
-              <span>✓ 98% clearing on time</span>
+              <span>âœ“ 98% clearing on time</span>
             </div>
           </div>
           <div className="w-10 h-10 rounded bg-[#E0F2FE] text-[#0F5B6E] flex items-center justify-center">
@@ -275,7 +275,7 @@ export default function LogisticsPage() {
                   #MEG-882
                 </h3>
                 <p className="text-xs text-[#64748B] mt-0.5">
-                  Vaccine Adjuvants (Cold Chain 2-8°C)
+                  Vaccine Adjuvants (Cold Chain 2-8Â°C)
                 </p>
               </div>
               <span className="px-2.5 py-1 text-[11px] font-semibold text-[#0F5B6E] bg-[#E0F2FE] border border-[#BAE6FD] rounded flex items-center gap-1.5">
@@ -334,11 +334,11 @@ export default function LogisticsPage() {
                     </div>
                   </div>
                   <p className="text-[11px] text-[#64748B] leading-relaxed">
-                    Temperature maintaining steady at 4.2°C. Tailwinds increasing arrival probability.
+                    Temperature maintaining steady at 4.2Â°C. Tailwinds increasing arrival probability.
                   </p>
                   <div className="flex items-center gap-2 pt-1">
                     <span className="px-2 py-0.5 text-[10px] font-semibold text-[#1E293B] bg-white border border-[#EAE2E4] rounded flex items-center gap-1">
-                      <Thermometer className="w-3 h-3 text-[#0F5B6E]" /> Temp: 4.2°C
+                      <Thermometer className="w-3 h-3 text-[#0F5B6E]" /> Temp: 4.2Â°C
                     </span>
                     <span className="px-2 py-0.5 text-[10px] font-semibold text-[#1E293B] bg-white border border-[#EAE2E4] rounded flex items-center gap-1">
                       <Droplets className="w-3 h-3 text-[#0F5B6E]" /> Hum: 45%
@@ -403,7 +403,7 @@ export default function LogisticsPage() {
               <div className="p-3 bg-[#FAF8F8] rounded border border-[#EAE2E4] space-y-1">
                 <div className="flex justify-between"><span className="text-[#64748B]">Commodity:</span><span className="font-semibold">Vaccine Adjuvant Sterile Liquid (QS-21)</span></div>
                 <div className="flex justify-between"><span className="text-[#64748B]">Quantity:</span><span className="font-semibold">2,500 Vials (10 Crates)</span></div>
-                <div className="flex justify-between"><span className="text-[#64748B]">Thermal Tolerance:</span><span className="font-semibold text-[#8B1538]">+2.0°C to +8.0°C</span></div>
+                <div className="flex justify-between"><span className="text-[#64748B]">Thermal Tolerance:</span><span className="font-semibold text-[#8B1538]">+2.0Â°C to +8.0Â°C</span></div>
                 <div className="flex justify-between"><span className="text-[#64748B]">Consignee:</span><span className="font-semibold">CityCare Metropolitan Hospital</span></div>
               </div>
             </div>
@@ -439,8 +439,8 @@ export default function LogisticsPage() {
               <div>
                 <label className="block font-bold text-[#1E293B] mb-1">Handling Protocol</label>
                 <select className="w-full px-3 py-2 rounded border border-[#EAE2E4]">
-                  <option>Cold Chain (2°C - 8°C)</option>
-                  <option>Cryogenic (-80°C Dry Ice)</option>
+                  <option>Cold Chain (2Â°C - 8Â°C)</option>
+                  <option>Cryogenic (-80Â°C Dry Ice)</option>
                   <option>Ambient Controlled</option>
                 </select>
               </div>

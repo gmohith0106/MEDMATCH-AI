@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -124,9 +124,9 @@ export function ApprovalModal() {
                 <div className="flex items-center justify-between pb-2 border-b border-[#ffc8d3]">
                   <span className="text-[#667085] font-semibold">Estimated Cost:</span>
                   <span className="font-heading font-extrabold text-base text-[#24324a]">
-                    ₹{(agentState.recommendationResult?.totalCost || 1900).toLocaleString()}{' '}
+                    â‚¹{(agentState.recommendationResult?.totalCost || 1900).toLocaleString()}{' '}
                     <span className="text-[11px] font-normal text-[#667085]">
-                      (₹{agentState.recommendationResult?.unitPrice?.toFixed(2)}/unit &bull; Est. Savings: ₹{agentState.recommendationResult?.estimatedSavings})
+                      (â‚¹{agentState.recommendationResult?.unitPrice?.toFixed(2)}/unit &bull; Est. Savings: â‚¹{agentState.recommendationResult?.estimatedSavings})
                     </span>
                   </span>
                 </div>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { ShieldCheck, Info, Sparkles } from 'lucide-react';

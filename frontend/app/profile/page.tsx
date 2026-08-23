@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -48,10 +48,10 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      <form onSubmit={handleSave} className="bg-white rounded-xl border border-[#DDE9E2] p-6 sm:p-8 shadow-sm space-y-6">
+      <form onSubmit={handleSave} className="bg-white rounded-xl border border-[#cbd5e1] p-6 sm:p-8 shadow-sm space-y-6">
         {/* Avatar & Role Header */}
         <div className="flex items-center gap-4 pb-6 border-b border-slate-100">
-          <div className="w-16 h-16 rounded-full bg-slate-900 text-teal-400 font-black text-2xl flex items-center justify-center shadow-sm">
+          <div className="w-16 h-16 rounded-full bg-slate-900 text-pink-400 font-black text-2xl flex items-center justify-center shadow-sm">
             {user?.avatarInitials || 'RR'}
           </div>
           <div>
@@ -59,7 +59,7 @@ export default function ProfilePage() {
               Dr. {firstName} {lastName}
             </h2>
             <p className="text-xs text-slate-500">Clinical Director of Procurement</p>
-            <span className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-bold bg-teal-50 text-teal-800 border border-teal-200 uppercase">
+            <span className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-bold bg-pink-50 text-pink-800 border border-pink-200 uppercase">
               AUTHORIZED PROCUREMENT SIGNATORY
             </span>
           </div>
@@ -73,7 +73,7 @@ export default function ProfilePage() {
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:border-teal-500 bg-white outline-none text-slate-900"
+              className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:border-pink-500 bg-white outline-none text-slate-900"
             />
           </div>
 
@@ -83,7 +83,7 @@ export default function ProfilePage() {
               type="text"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:border-teal-500 bg-white outline-none text-slate-900"
+              className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:border-pink-500 bg-white outline-none text-slate-900"
             />
           </div>
 
@@ -93,7 +93,7 @@ export default function ProfilePage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:border-teal-500 bg-white outline-none text-slate-900"
+              className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:border-pink-500 bg-white outline-none text-slate-900"
             />
           </div>
 
@@ -103,7 +103,7 @@ export default function ProfilePage() {
               type="text"
               value={department}
               onChange={(e) => setDepartment(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:border-teal-500 bg-white outline-none text-slate-900"
+              className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:border-pink-500 bg-white outline-none text-slate-900"
             />
           </div>
 
@@ -113,15 +113,15 @@ export default function ProfilePage() {
               type="text"
               value={hospitalName}
               onChange={(e) => setHospitalName(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:border-teal-500 bg-white outline-none text-slate-900"
+              className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:border-pink-500 bg-white outline-none text-slate-900"
             />
           </div>
         </div>
 
         {/* Institutional Governance Notice */}
-        <div className="p-4 rounded-lg bg-[#E8F1EC]/40 border border-[#DDE9E2] space-y-1.5 text-xs">
+        <div className="p-4 rounded-lg bg-[#f1f5f9]/40 border border-[#cbd5e1] space-y-1.5 text-xs">
           <div className="flex items-center gap-2 font-bold text-slate-800">
-            <ShieldCheck className="w-4 h-4 text-teal-700" />
+            <ShieldCheck className="w-4 h-4 text-pink-700" />
             <span>Human-in-the-Loop Governance</span>
           </div>
           <p className="text-slate-600 text-[11px]">
@@ -133,7 +133,7 @@ export default function ProfilePage() {
         <div className="flex justify-end gap-3 pt-4 border-t border-slate-100">
           <button
             type="submit"
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-sm transition-all"
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-lg bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold shadow-sm transition-all"
           >
             <Save className="w-4 h-4" />
             <span>{isSaved ? 'Changes Saved' : 'Save Profile'}</span>

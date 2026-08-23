@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
@@ -189,9 +189,9 @@ export default function StaffManagementPage() {
 
   const roleBadgeStyles: Record<UserRole, { bg: string; text: string; label: string }> = {
     ADMIN: { bg: 'bg-purple-50 border-purple-200', text: 'text-purple-700', label: 'Hospital Admin' },
-    PROCUREMENT_STAFF: { bg: 'bg-teal-50 border-teal-200', text: 'text-teal-700', label: 'Procurement Staff' },
+    PROCUREMENT_STAFF: { bg: 'bg-pink-50 border-pink-200', text: 'text-pink-700', label: 'Procurement Staff' },
     INVENTORY_STAFF: { bg: 'bg-blue-50 border-blue-200', text: 'text-blue-700', label: 'Inventory Staff' },
-    MANAGER: { bg: 'bg-emerald-50 border-emerald-200', text: 'text-emerald-700', label: 'Clinical Manager' }
+    MANAGER: { bg: 'bg-slate-100 border-slate-300', text: 'text-slate-600', label: 'Clinical Manager' }
   };
 
   const filteredStaff = staffList.filter((s) => {
@@ -207,10 +207,10 @@ export default function StaffManagementPage() {
   return (
     <div className="p-6 sm:p-8 space-y-6 max-w-7xl mx-auto font-sans">
       {/* Header Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#DDE9E2] shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#cbd5e1] shadow-xs">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <span className="p-2 rounded-xl bg-teal-50 text-teal-700">
+            <span className="p-2 rounded-xl bg-pink-50 text-pink-700">
               <Users className="w-5 h-5" />
             </span>
             <h1 className="text-xl font-bold text-slate-900">Hospital Staff Management</h1>
@@ -225,7 +225,7 @@ export default function StaffManagementPage() {
             setFormError(null);
             setIsAddModalOpen(true);
           }}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition-all shadow-sm active:scale-98 shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold transition-all shadow-sm active:scale-98 shrink-0"
         >
           <UserPlus className="w-4 h-4" />
           <span>Provision New Staff</span>
@@ -234,8 +234,8 @@ export default function StaffManagementPage() {
 
       {/* Alerts */}
       {success && (
-        <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-medium text-emerald-800 flex items-center gap-2 animate-fadeIn">
-          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+        <div className="p-4 rounded-xl bg-slate-100 border border-slate-300 text-xs font-medium text-slate-700 flex items-center gap-2 animate-fadeIn">
+          <CheckCircle2 className="w-4 h-4 text-slate-500 shrink-0" />
           <span>{success}</span>
         </div>
       )}
@@ -256,7 +256,7 @@ export default function StaffManagementPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by name, email, department..."
-            className="w-full pl-9 pr-4 py-2 rounded-lg border border-slate-200 text-xs focus:outline-none focus:border-teal-600 bg-slate-50/50"
+            className="w-full pl-9 pr-4 py-2 rounded-lg border border-slate-200 text-xs focus:outline-none focus:border-pink-600 bg-slate-50/50"
           />
         </div>
 
@@ -265,7 +265,7 @@ export default function StaffManagementPage() {
           <select
             value={filterRole}
             onChange={(e) => setFilterRole(e.target.value)}
-            className="px-3 py-2 rounded-lg border border-slate-200 text-xs font-medium text-slate-700 bg-white focus:outline-none focus:border-teal-600"
+            className="px-3 py-2 rounded-lg border border-slate-200 text-xs font-medium text-slate-700 bg-white focus:outline-none focus:border-pink-600"
           >
             <option value="ALL">All Roles ({staffList.length})</option>
             <option value="ADMIN">Hospital Admin</option>
@@ -277,10 +277,10 @@ export default function StaffManagementPage() {
       </div>
 
       {/* Staff Table */}
-      <div className="bg-white rounded-2xl border border-[#DDE9E2] shadow-xs overflow-hidden">
+      <div className="bg-white rounded-2xl border border-[#cbd5e1] shadow-xs overflow-hidden">
         {isLoading ? (
           <div className="p-12 text-center text-slate-500 flex flex-col items-center justify-center gap-3">
-            <Loader2 className="w-6 h-6 animate-spin text-teal-600" />
+            <Loader2 className="w-6 h-6 animate-spin text-pink-600" />
             <span className="text-xs font-semibold">Loading hospital staff records...</span>
           </div>
         ) : filteredStaff.length === 0 ? (
@@ -328,10 +328,10 @@ export default function StaffManagementPage() {
                       <td className="py-4 px-6">
                         <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${
                           isActive
-                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                            ? 'bg-slate-100 text-slate-600 border border-slate-300'
                             : 'bg-rose-50 text-rose-700 border border-rose-200'
                         }`}>
-                          <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-emerald-500' : 'bg-rose-500'}`} />
+                          <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-slate-400' : 'bg-rose-500'}`} />
                           <span>{staff.status}</span>
                         </span>
                       </td>
@@ -342,7 +342,7 @@ export default function StaffManagementPage() {
                             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border ${
                               isActive
                                 ? 'bg-white hover:bg-rose-50 text-rose-700 border-rose-200'
-                                : 'bg-white hover:bg-emerald-50 text-emerald-700 border-emerald-200'
+                                : 'bg-white hover:bg-slate-100 text-slate-600 border-slate-300'
                             }`}
                           >
                             {isActive ? 'Deactivate' : 'Activate'}
@@ -361,10 +361,10 @@ export default function StaffManagementPage() {
       {/* Provision New Staff Modal */}
       {isAddModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
-          <div className="bg-white rounded-2xl border border-[#DDE9E2] shadow-2xl max-w-lg w-full p-6 sm:p-8 space-y-6">
+          <div className="bg-white rounded-2xl border border-[#cbd5e1] shadow-2xl max-w-lg w-full p-6 sm:p-8 space-y-6">
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <div className="flex items-center gap-2.5">
-                <span className="p-2 rounded-xl bg-teal-50 text-teal-700">
+                <span className="p-2 rounded-xl bg-pink-50 text-pink-700">
                   <UserPlus className="w-5 h-5" />
                 </span>
                 <div>
@@ -398,7 +398,7 @@ export default function StaffManagementPage() {
                   onChange={(e) => setNewName(e.target.value)}
                   placeholder="e.g. Dr. Alexander Price"
                   required
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-slate-900 focus:outline-none focus:border-teal-600 bg-slate-50/50"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-slate-900 focus:outline-none focus:border-pink-600 bg-slate-50/50"
                 />
               </div>
 
@@ -412,7 +412,7 @@ export default function StaffManagementPage() {
                   onChange={(e) => setNewEmail(e.target.value)}
                   placeholder="a.price@citycare.hospital"
                   required
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-slate-900 focus:outline-none focus:border-teal-600 bg-slate-50/50"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-slate-900 focus:outline-none focus:border-pink-600 bg-slate-50/50"
                 />
               </div>
 
@@ -427,7 +427,7 @@ export default function StaffManagementPage() {
                     onChange={(e) => setNewDepartment(e.target.value)}
                     placeholder="Procurement & Logistics"
                     required
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-slate-900 focus:outline-none focus:border-teal-600 bg-slate-50/50"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-slate-900 focus:outline-none focus:border-pink-600 bg-slate-50/50"
                   />
                 </div>
 
@@ -438,7 +438,7 @@ export default function StaffManagementPage() {
                   <select
                     value={newRole}
                     onChange={(e) => setNewRole(e.target.value as UserRole)}
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 font-semibold text-slate-800 bg-white focus:outline-none focus:border-teal-600"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 font-semibold text-slate-800 bg-white focus:outline-none focus:border-pink-600"
                   >
                     <option value="PROCUREMENT_STAFF">Procurement Staff</option>
                     <option value="INVENTORY_STAFF">Inventory Staff</option>
@@ -458,7 +458,7 @@ export default function StaffManagementPage() {
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="At least 8 characters"
                   required
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-slate-900 focus:outline-none focus:border-teal-600 bg-slate-50/50"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-slate-900 focus:outline-none focus:border-pink-600 bg-slate-50/50"
                 />
               </div>
 
@@ -473,7 +473,7 @@ export default function StaffManagementPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold transition-all shadow-sm active:scale-98 disabled:opacity-50 flex items-center gap-2"
+                  className="px-5 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold transition-all shadow-sm active:scale-98 disabled:opacity-50 flex items-center gap-2"
                 >
                   {isSubmitting ? (
                     <>

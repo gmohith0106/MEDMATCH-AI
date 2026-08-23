@@ -1,3 +1,3 @@
-import CompliancePage from '@/app/compliance/page';
+﻿import CompliancePage from '@/app/compliance/page';
 
 export default CompliancePage;

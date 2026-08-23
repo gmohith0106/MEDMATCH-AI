@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import { rtdb, hasDatabaseCredentials } from '../config/firebase';
 import { UserProfile, StaffStatus } from '../types/auth.types';
 import { MemoryStore } from './memory-store';
@@ -7,6 +9,43 @@ import { logger } from '../utils/logger';
 export class UserRepository {
   private ref = rtdb.ref('users');
   private memStore = MemoryStore.getInstance();
+  private filePath = path.resolve(process.cwd(), 'data', 'users.json');
+
+  constructor() {
+    this.loadFromDisk();
+  }
+
+  private loadFromDisk(): void {
+    try {
+      if (fs.existsSync(this.filePath)) {
+        const raw = fs.readFileSync(this.filePath, 'utf-8');
+        const list: UserProfile[] = JSON.parse(raw);
+        if (Array.isArray(list)) {
+          list.forEach((u) => {
+            if (u.uid) {
+              this.memStore.users.set(u.uid, u);
+            }
+          });
+          logger.debug(`[UserRepository] Loaded ${list.length} user records from disk`);
+        }
+      }
+    } catch (err) {
+      logger.warn('[UserRepository] Failed to read users.json from disk', err);
+    }
+  }
+
+  private saveToDisk(): void {
+    try {
+      const dataDir = path.dirname(this.filePath);
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      const list = Array.from(this.memStore.users.values());
+      fs.writeFileSync(this.filePath, JSON.stringify(list, null, 2), 'utf-8');
+    } catch (err) {
+      logger.warn('[UserRepository] Failed to save users.json to disk', err);
+    }
+  }
 
   async findById(uid: string): Promise<UserProfile | null> {
     if (hasDatabaseCredentials) {
@@ -87,6 +126,7 @@ export class UserRepository {
     }
 
     this.memStore.users.set(profile.uid, profile);
+    this.saveToDisk();
     return profile;
   }
 
@@ -113,6 +153,7 @@ export class UserRepository {
     }
 
     this.memStore.users.set(uid, updated);
+    this.saveToDisk();
     return updated;
   }
 

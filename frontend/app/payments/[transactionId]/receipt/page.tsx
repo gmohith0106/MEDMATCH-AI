@@ -30,7 +30,7 @@ export default function PrintableReceiptPage() {
     transactionId: transactionIdParam.startsWith('pay_') ? 'WXYZ7492842JFKALGORANDTESTNETTXN7489' : transactionIdParam,
     senderAddress: 'MEDMATCH7AUTONOMOUSAGENTPAYERTESTNETACCOUNT992484',
     receiverAddress: 'TIER1SUPPLIERORACLEACCOUNTRECEIVERTESTNETALGO8823',
-    amount: 0.02,
+    amount: 0.001,
     asset: 'ALGO',
     currency: 'USD',
     network: 'Algorand TestNet',
@@ -119,10 +119,10 @@ export default function PrintableReceiptPage() {
             </div>
             <div className="text-right">
               <p className="font-bold text-[#24324a]">
-                {formatUsd(payment.amount || 0.02)}
+                {formatUsd(payment.amount || 0.001)}
               </p>
               <p className="text-xs font-bold text-[#e3577c] font-mono">
-                {payment.amount || 0.02} {payment.asset || 'ALGO'}
+                {payment.amount || 0.001} {payment.asset || 'ALGO'}
               </p>
             </div>
           </div>

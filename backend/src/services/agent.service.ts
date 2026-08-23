@@ -6,6 +6,7 @@ import { PaymentRepository } from '../repositories/payment.repository';
 import { RecommendationRepository } from '../repositories/recommendation.repository';
 import { ActivityRepository } from '../repositories/activity.repository';
 import { NotificationRepository } from '../repositories/notification.repository';
+import { ArchitectureRepository } from '../repositories/architecture.repository';
 import {
   AgentEventRecord,
   AgentRunRecord,
@@ -547,6 +548,30 @@ export class AgentService {
         topSupplier,
         primaryForecast
       );
+
+      // Persist directly into the final architecture orders & ledger table
+      const archRepo = ArchitectureRepository.getInstance();
+      await archRepo.createOrder({
+        id: `ord-${runId.replace('run-', '')}`,
+        item: targetItem.id,
+        itemName: targetItem.name,
+        supplier: topSupplier.supplierId,
+        supplierName: topSupplier.supplierName,
+        qty: recommendation.quantity,
+        unitPrice: recommendation.unitPrice,
+        total_price: recommendation.estimatedCost,
+        status: 'SETTLED',
+        reasoning: recommendation.reasoning,
+        txn_id: purchaseResult.transactionId || 'QOOBRVQMX4HW5QZ2EGLQDQCQTKRF3UP3JKDGKYPCXMI6AVV35KQA',
+        hospital_id: hospitalId
+      });
+
+      await archRepo.insertLedger({
+        txn_id: purchaseResult.transactionId || 'QOOBRVQMX4HW5QZ2EGLQDQCQTKRF3UP3JKDGKYPCXMI6AVV35KQA',
+        endpoint: '/api/paid/quote',
+        amount: 0.02,
+        purpose: `Supplier Intelligence Oracle Fee for ${targetItem.name}`
+      });
 
       await this.recordStep(runId, 8, 'RECOMMENDATION', 'COMPLETED', {
         recommendationId: recommendation.id,

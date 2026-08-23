@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import { PaymentConfigStatus } from '@/types/payment';
@@ -59,7 +59,7 @@ export function PaymentConfigBanner() {
     <div
       className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
         isConnected
-          ? 'bg-emerald-50/40 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-900/50'
+          ? 'bg-slate-100/40 dark:bg-slate-900/20 border-slate-300 dark:border-slate-800/50'
           : isConfigRequired
           ? 'bg-amber-50/40 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900/50'
           : 'bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800'
@@ -70,7 +70,7 @@ export function PaymentConfigBanner() {
           <div
             className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm ${
               isConnected
-                ? 'bg-emerald-100 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-400'
+                ? 'bg-slate-200 text-slate-500 dark:bg-slate-800/40 dark:text-slate-400'
                 : isConfigRequired
                 ? 'bg-amber-100 text-amber-600 dark:bg-amber-900/40 dark:text-amber-400'
                 : 'bg-rose-100 text-rose-600 dark:bg-rose-900/40 dark:text-rose-400'
@@ -92,7 +92,7 @@ export function PaymentConfigBanner() {
               <span
                 className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold ${
                   isConnected
-                    ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
+                    ? 'bg-slate-400/10 text-slate-500 dark:text-slate-400 border border-slate-400/20'
                     : isConfigRequired
                     ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20'
                     : 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20'
@@ -145,7 +145,7 @@ export function PaymentConfigBanner() {
                 <Layers className="w-3.5 h-3.5 text-pink-500" />
                 x402 Protocol
               </span>
-              <span className="font-semibold text-emerald-600">Enabled</span>
+              <span className="font-semibold text-slate-500">Enabled</span>
             </div>
             <p className="font-medium text-zinc-800 dark:text-zinc-200">
               Scheme: {config.x402.scheme}
@@ -160,7 +160,7 @@ export function PaymentConfigBanner() {
               </span>
               <span
                 className={`font-semibold ${
-                  config.algorand.algodConnected ? 'text-emerald-600' : 'text-amber-600'
+                  config.algorand.algodConnected ? 'text-slate-500' : 'text-amber-600'
                 }`}
               >
                 {config.algorand.algodConnected ? 'Live Algonode' : 'Pending'}
@@ -179,7 +179,7 @@ export function PaymentConfigBanner() {
               </span>
               <span
                 className={`font-semibold ${
-                  config.algorand.indexerConnected ? 'text-emerald-600' : 'text-amber-600'
+                  config.algorand.indexerConnected ? 'text-slate-500' : 'text-amber-600'
                 }`}
               >
                 {config.algorand.indexerConnected ? 'Connected' : 'Pending'}
@@ -199,7 +199,7 @@ export function PaymentConfigBanner() {
               <span
                 className={`font-semibold ${
                   config.algorand.receiverAddressConfigured
-                    ? 'text-emerald-600'
+                    ? 'text-slate-500'
                     : 'text-amber-600'
                 }`}
               >

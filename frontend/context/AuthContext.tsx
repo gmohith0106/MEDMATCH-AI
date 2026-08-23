@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -9,6 +9,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   firebaseSignOut,
+  sendPasswordResetEmail,
   onAuthStateChanged,
   FirebaseUser
 } from '@/lib/firebase';
@@ -24,6 +25,7 @@ interface AuthContextType {
   getIdToken: () => Promise<string | null>;
   signInWithEmail: (credentials: LoginCredentials) => Promise<boolean>;
   signInWithGoogle: () => Promise<{ success: boolean; message: string }>;
+  sendPasswordReset: (email: string) => Promise<{ success: boolean; message?: string }>;
   signOut: () => Promise<void>;
 }
 
@@ -270,6 +272,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const sendPasswordReset = async (resetEmail: string): Promise<{ success: boolean; message?: string }> => {
+    try {
+      setIsLoading(true);
+      await sendPasswordResetEmail(auth, resetEmail);
+      setIsLoading(false);
+      setAuthSuccess('Password reset link sent to your email.');
+      return { success: true, message: 'Password reset link sent.' };
+    } catch (err: any) {
+      setIsLoading(false);
+      const msg = err?.message || 'Failed to send password reset email.';
+      setAuthError(msg);
+      return { success: false, message: msg };
+    }
+  };
+
   const signOut = async (): Promise<void> => {
     try {
       await firebaseSignOut(auth);
@@ -295,6 +312,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         getIdToken,
         signInWithEmail,
         signInWithGoogle,
+        sendPasswordReset,
         signOut,
       }}
     >

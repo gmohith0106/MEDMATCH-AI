@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
@@ -57,7 +57,7 @@ export function SearchModal() {
     ...suppliers.map((sup) => ({
       id: `sup-${sup.id}`,
       title: sup.name,
-      subtitle: `Score: ${sup.overallScore} | ${sup.deliveryDays}-Day Delivery | ₹${sup.unitPrice}/unit`,
+      subtitle: `Score: ${sup.overallScore} | ${sup.deliveryDays}-Day Delivery | â‚¹${sup.unitPrice}/unit`,
       category: 'Suppliers' as const,
       href: '/suppliers',
       icon: Building2,
@@ -73,7 +73,7 @@ export function SearchModal() {
     })),
 
     ...payments.map((pay) => {
-      const amount = pay.amount ?? pay.amountUsd ?? 0.02;
+      const amount = pay.amount ?? pay.amountUsd ?? 0.001;
       const tx = pay.transactionId ? ` (${pay.transactionId})` : '';
       return {
         id: `pay-${pay.id}`,
@@ -168,7 +168,7 @@ export function SearchModal() {
         {/* Footer info */}
         <div className="p-3 border-t border-[#ffc8d3] bg-[#fff5f7] flex items-center justify-between text-[11px] text-[#667085]">
           <div className="flex items-center gap-2">
-            <kbd className="px-1.5 py-0.5 rounded-badge bg-white border border-[#ffc8d3] text-[10px] font-mono text-[#24324a]">↵</kbd>
+            <kbd className="px-1.5 py-0.5 rounded-badge bg-white border border-[#ffc8d3] text-[10px] font-mono text-[#24324a]">â†µ</kbd>
             <span>to select</span>
             <kbd className="px-1.5 py-0.5 rounded-badge bg-white border border-[#ffc8d3] text-[10px] font-mono text-[#24324a]">esc</kbd>
             <span>to close</span>

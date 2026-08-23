@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
 import { DemoProvider } from '@/context/DemoContext';
 import { AppShell } from '@/components/layout/AppShell';
 
 export const metadata: Metadata = {
-  title: 'MediMatch AI — Autonomous Medical Procurement & x402 Algorand Intelligence',
+  title: 'MediMatch AI â€” Autonomous Medical Procurement & x402 Algorand Intelligence',
   description:
     'AI-powered clinical supplier intelligence and autonomous procurement settlements powered by the x402 micropayment protocol on Algorand.',
   keywords: [

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -59,20 +59,20 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F2F4F3] flex flex-col justify-center items-center p-4 relative overflow-hidden font-sans">
+    <div className="min-h-screen bg-[#ffffff] flex flex-col justify-center items-center p-4 relative overflow-hidden font-sans">
       {/* Subtle ambient background glow */}
-      <div className="absolute top-12 left-1/4 w-[420px] h-[420px] bg-[#DDE9E2]/50 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-12 right-1/4 w-[420px] h-[420px] bg-[#E8F1EC]/60 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-12 left-1/4 w-[420px] h-[420px] bg-[#cbd5e1]/50 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-12 right-1/4 w-[420px] h-[420px] bg-[#f1f5f9]/60 rounded-full blur-3xl pointer-events-none -z-10" />
 
       {/* Main Login Card */}
-      <div className="w-full max-w-md bg-white rounded-2xl border border-[#DDE9E2] shadow-xl shadow-slate-900/5 p-8 sm:p-10 space-y-6">
+      <div className="w-full max-w-md bg-white rounded-2xl border border-[#cbd5e1] shadow-xl shadow-slate-900/5 p-8 sm:p-10 space-y-6">
         {/* Brand Header */}
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-xl bg-teal-600 text-white font-bold text-2xl flex items-center justify-center mx-auto shadow-md shadow-teal-600/20">
+          <div className="w-12 h-12 rounded-xl bg-pink-600 text-white font-bold text-2xl flex items-center justify-center mx-auto shadow-md shadow-pink-600/20">
             <span className="font-sans font-black">M</span>
           </div>
           <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">MEDMATCH AI</h1>
-          <p className="text-sm font-semibold text-teal-800">Hospital Staff Login</p>
+          <p className="text-sm font-semibold text-pink-800">Hospital Staff Login</p>
           <p className="text-xs text-slate-500">Authorized Clinical & Supply Chain Personnel Only</p>
         </div>
 
@@ -85,8 +85,8 @@ export default function LoginPage() {
         )}
 
         {authSuccess && (
-          <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-medium text-emerald-700 flex items-center gap-2.5 animate-fadeIn">
-            <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
+          <div className="p-3.5 rounded-xl bg-slate-100 border border-slate-300 text-xs font-medium text-slate-600 flex items-center gap-2.5 animate-fadeIn">
+            <CheckCircle2 className="w-4 h-4 shrink-0 text-slate-500" />
             <span>{authSuccess}</span>
           </div>
         )}
@@ -103,7 +103,7 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="name@hospital.org"
               required
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600 bg-slate-50/50 hover:bg-white transition-colors"
+              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600 bg-slate-50/50 hover:bg-white transition-colors"
             />
           </div>
 
@@ -118,7 +118,7 @@ export default function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter password"
                 required
-                className="w-full px-3.5 pr-10 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600 bg-slate-50/50 hover:bg-white transition-colors"
+                className="w-full px-3.5 pr-10 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-pink-600 focus:ring-1 focus:ring-pink-600 bg-slate-50/50 hover:bg-white transition-colors"
               />
               <button
                 type="button"
@@ -135,7 +135,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 px-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold transition-all shadow-md shadow-teal-700/10 active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full py-3 px-4 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-sm font-bold transition-all shadow-md shadow-pink-700/10 active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {isLoading ? (
               <>
@@ -161,7 +161,7 @@ export default function LoginPage() {
           type="button"
           onClick={handleGoogleLogin}
           disabled={isLoading}
-          className="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-[#DDE9E2] text-sm font-bold transition-all shadow-xs active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-3"
+          className="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-[#cbd5e1] text-sm font-bold transition-all shadow-xs active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-3"
         >
           <svg className="w-4 h-4" viewBox="0 0 24 24">
             <path
@@ -186,7 +186,7 @@ export default function LoginPage() {
 
         {/* Footer Security Note */}
         <div className="pt-2 text-center text-[11px] text-slate-400 flex items-center justify-center gap-1.5 border-t border-slate-100">
-          <Lock className="w-3.5 h-3.5 text-teal-600" />
+          <Lock className="w-3.5 h-3.5 text-pink-600" />
           <span>Access Restricted to Authorized Hospital Staff</span>
         </div>
       </div>

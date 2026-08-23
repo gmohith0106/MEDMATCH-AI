@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -99,14 +99,14 @@ export default function ProcurementPage() {
     {
       num: 5,
       title: 'Payment Required (HTTP 402)',
-      desc: 'Resource server returned standard HTTP 402 challenge requiring 0.02 USDC micropayment.',
+      desc: 'Resource server returned standard HTTP 402 challenge requiring 0.001 USDC micropayment.',
       done: currentStepNumber >= 5,
       active: currentStepNumber === 5 && isRunning,
     },
     {
       num: 6,
       title: 'Payment Processed on Algorand TestNet',
-      desc: 'Spend policy verified within hospital micro-spend limit. Settled 0.02 USDC on Algorand TestNet.',
+      desc: 'Spend policy verified within hospital micro-spend limit. Settled 0.001 USDC on Algorand TestNet.',
       done: currentStepNumber >= 6,
       active: currentStepNumber === 6 && isRunning,
     },
@@ -136,14 +136,14 @@ export default function ProcurementPage() {
   return (
     <div className="space-y-6 animate-fadeIn">
       {/* Top Header & Preset Control */}
-      <div className="bg-white rounded-xl border border-[#DDE9E2] p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white rounded-xl border border-[#cbd5e1] p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-teal-50 text-teal-700 border border-teal-200">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-pink-50 text-pink-700 border border-pink-200">
               <Bot className="w-3.5 h-3.5" />
               Autonomous Procurement Workflow
             </span>
-            <span className="text-xs text-slate-400">•</span>
+            <span className="text-xs text-slate-400">â€¢</span>
             <span className="text-xs text-slate-500 font-medium">Algorand TestNet x402</span>
           </div>
           <h1 className="text-2xl font-bold text-slate-900 mt-1">Autonomous Shortage Resolution</h1>
@@ -154,7 +154,7 @@ export default function ProcurementPage() {
 
         {/* Action Controls */}
         <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-1.5 bg-[#E8F1EC]/60 px-3 py-1.5 rounded-lg border border-[#DDE9E2] text-xs">
+          <div className="flex items-center gap-1.5 bg-[#f1f5f9]/60 px-3 py-1.5 rounded-lg border border-[#cbd5e1] text-xs">
             <span className="text-slate-500 font-medium">Target SKU:</span>
             <select
               value={activePresetKey}
@@ -176,7 +176,7 @@ export default function ProcurementPage() {
                 setDecisionState('pending');
                 startAgentRun();
               }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition-all shadow-sm active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold transition-all shadow-sm active:scale-95"
             >
               <Bot className="w-4 h-4" />
               <span>RUN PROCUREMENT AGENT</span>
@@ -195,7 +195,7 @@ export default function ProcurementPage() {
       </div>
 
       {/* 1. Procurement Shortage Summary Banner */}
-      <div className="bg-white rounded-xl border border-[#DDE9E2] p-6 shadow-sm">
+      <div className="bg-white rounded-xl border border-[#cbd5e1] p-6 shadow-sm">
         <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div className="flex items-center gap-2">
             <Package className="w-4 h-4 text-slate-600" />
@@ -236,10 +236,10 @@ export default function ProcurementPage() {
       {/* 2-Column Main Workspace: Agent Timeline (Left) & Payment + Recommendation (Right) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Agent Progress Timeline (7 Cols) */}
-        <div className="lg:col-span-7 bg-white rounded-xl border border-[#DDE9E2] p-6 shadow-sm space-y-4">
+        <div className="lg:col-span-7 bg-white rounded-xl border border-[#cbd5e1] p-6 shadow-sm space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2">
-              <Clock className="w-4 h-4 text-teal-600" />
+              <Clock className="w-4 h-4 text-pink-600" />
               Autonomous Agent Execution Timeline
             </h3>
             <span className="text-xs font-semibold text-slate-500">
@@ -255,20 +255,20 @@ export default function ProcurementPage() {
                   step.done
                     ? 'bg-slate-50/70 border-slate-200'
                     : step.active
-                    ? 'bg-teal-50/50 border-teal-300 ring-1 ring-teal-400'
+                    ? 'bg-pink-50/50 border-pink-300 ring-1 ring-pink-400'
                     : 'bg-white border-slate-100 opacity-60'
                 }`}
               >
                 <div
                   className={`w-6 h-6 rounded-full shrink-0 flex items-center justify-center text-xs font-bold mt-0.5 ${
                     step.done
-                      ? 'bg-teal-600 text-white'
+                      ? 'bg-pink-600 text-white'
                       : step.active
-                      ? 'bg-teal-500 text-white animate-pulse'
+                      ? 'bg-pink-500 text-white animate-pulse'
                       : 'bg-slate-200 text-slate-500'
                   }`}
                 >
-                  {step.done ? '✓' : step.num}
+                  {step.done ? '?' : step.num}
                 </div>
 
                 <div className="flex-1 min-w-0">
@@ -277,12 +277,12 @@ export default function ProcurementPage() {
                       {step.title}
                     </p>
                     {step.done && (
-                      <span className="text-[10px] font-semibold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded">
+                      <span className="text-[10px] font-semibold text-pink-700 bg-pink-50 px-1.5 py-0.5 rounded">
                         Done
                       </span>
                     )}
                     {step.active && (
-                      <span className="text-[10px] font-bold text-teal-700 bg-teal-100 px-1.5 py-0.5 rounded animate-pulse">
+                      <span className="text-[10px] font-bold text-pink-700 bg-pink-100 px-1.5 py-0.5 rounded animate-pulse">
                         In Progress...
                       </span>
                     )}
@@ -297,16 +297,16 @@ export default function ProcurementPage() {
         {/* Right Column: Clean Payment Summary & Final Human Approval Card (5 Cols) */}
         <div className="lg:col-span-5 space-y-6">
           {/* Payment Card */}
-          <div className="bg-white rounded-xl border border-[#DDE9E2] p-5 shadow-sm space-y-3">
+          <div className="bg-white rounded-xl border border-[#cbd5e1] p-5 shadow-sm space-y-3">
             <div className="flex items-center justify-between pb-2 border-b border-slate-100">
               <span className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-                <CreditCard className="w-3.5 h-3.5 text-teal-600" />
+                <CreditCard className="w-3.5 h-3.5 text-pink-600" />
                 x402 Micropayment Record
               </span>
               <span
                 className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-bold ${
                   currentStepNumber >= 6
-                    ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                    ? 'bg-slate-100 text-slate-600 border border-slate-300'
                     : currentStepNumber === 5
                     ? 'bg-amber-50 text-amber-700 border border-amber-200'
                     : 'bg-slate-100 text-slate-500'
@@ -314,7 +314,7 @@ export default function ProcurementPage() {
               >
                 {currentStepNumber >= 6 ? (
                   <>
-                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                    <CheckCircle2 className="w-3 h-3 text-slate-500" />
                     PAYMENT VERIFIED
                   </>
                 ) : currentStepNumber === 5 ? (
@@ -338,7 +338,7 @@ export default function ProcurementPage() {
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-slate-500">Amount & Asset:</span>
-                <span className="font-bold text-slate-900">0.02 USDC</span>
+                <span className="font-bold text-slate-900">0.001 USDC</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-slate-500">Settlement Network:</span>
@@ -355,7 +355,7 @@ export default function ProcurementPage() {
                     ? formatAlgorandAddress(activePayment.transactionId, 6)
                     : currentStepNumber >= 6
                     ? 'Confirmed on TestNet'
-                    : '—'}
+                    : 'â€”'}
                 </span>
               </div>
 
@@ -363,7 +363,7 @@ export default function ProcurementPage() {
               {currentStepNumber === 5 && agentState.status === 'waiting_payment' && (
                 <div className="pt-2 p-3 bg-amber-50/70 border border-amber-200 rounded-lg space-y-2">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-amber-900">0.02 USDC Payment Required</span>
+                    <span className="font-bold text-amber-900">0.001 USDC Payment Required</span>
                     <span className="text-[11px] text-amber-700 font-medium">HTTP 402</span>
                   </div>
                   <p className="text-[11px] text-amber-800 leading-relaxed">
@@ -371,9 +371,9 @@ export default function ProcurementPage() {
                   </p>
                   <button
                     onClick={() => setIsPaymentModalOpen(true)}
-                    className="w-full py-2 px-3 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-md shadow-sm transition-colors flex items-center justify-center gap-1.5"
+                    className="w-full py-2 px-3 bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold rounded-md shadow-sm transition-colors flex items-center justify-center gap-1.5"
                   >
-                    <span>Pay 0.02 USDC</span>
+                    <span>Pay 0.001 USDC</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
@@ -383,7 +383,7 @@ export default function ProcurementPage() {
                 <div className="pt-2 space-y-2">
                   <Link
                     href={`/payments/success/${activePayment.id}`}
-                    className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition-colors shadow-sm"
+                    className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold transition-colors shadow-sm"
                   >
                     <span>View Full Settlement Screen</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -394,7 +394,7 @@ export default function ProcurementPage() {
                       href={getAlgorandExplorerUrl(activePayment.transactionId)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full inline-flex items-center justify-center gap-1.5 py-2 rounded-lg border border-slate-200 hover:bg-slate-50 text-xs font-semibold text-teal-700 transition-colors"
+                      className="w-full inline-flex items-center justify-center gap-1.5 py-2 rounded-lg border border-slate-200 hover:bg-slate-50 text-xs font-semibold text-pink-700 transition-colors"
                     >
                       <span>View on Lora TestNet Explorer</span>
                       <ExternalLink className="w-3.5 h-3.5" />
@@ -406,9 +406,9 @@ export default function ProcurementPage() {
           </div>
 
           {/* Recommendation & Human Approval Card */}
-          <div className="bg-white rounded-xl border border-[#DDE9E2] p-5 shadow-sm space-y-4">
+          <div className="bg-white rounded-xl border border-[#cbd5e1] p-5 shadow-sm space-y-4">
             <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-              <span className="text-xs font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
+              <span className="text-xs font-bold text-pink-700 bg-pink-50 px-2 py-0.5 rounded border border-pink-200">
                 AI SUPPLIER RECOMMENDATION
               </span>
               <span className="text-xs font-semibold text-slate-500">
@@ -421,7 +421,7 @@ export default function ProcurementPage() {
               <p className="text-xs text-slate-500 mt-0.5">Top-Ranked Supplier for Clinical Procurement</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 py-2 bg-[#E8F1EC]/40 rounded-lg p-3 border border-[#DDE9E2] text-xs">
+            <div className="grid grid-cols-2 gap-3 py-2 bg-[#f1f5f9]/40 rounded-lg p-3 border border-[#cbd5e1] text-xs">
               <div>
                 <span className="text-slate-500">Recommended Qty:</span>
                 <p className="font-bold text-slate-900">{selectedPreset.recommendedQty.toLocaleString()} units</p>
@@ -436,7 +436,7 @@ export default function ProcurementPage() {
               </div>
               <div>
                 <span className="text-slate-500">Guaranteed Delivery:</span>
-                <p className="font-bold text-emerald-600">{selectedPreset.deliveryDays} Days (Safe)</p>
+                <p className="font-bold text-slate-500">{selectedPreset.deliveryDays} Days (Safe)</p>
               </div>
             </div>
 
@@ -444,49 +444,36 @@ export default function ProcurementPage() {
               <strong className="text-slate-900">Clinical Rationale:</strong> {selectedPreset.rationale}
             </p>
 
-            {/* Human Decision Action Section */}
-            <div className="pt-2 border-t border-slate-100 space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-700">Human Procurement Authority:</span>
-                <span className="text-xs text-slate-500">Dr. Sarah Jenkins</span>
+            {/* Autonomous Execution Status Section */}
+            <div className="pt-3 border-t border-slate-100 space-y-2.5">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-semibold text-slate-700">Procurement Plan Status:</span>
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-slate-100 text-slate-600 border border-slate-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-slate-500" />
+                  M2M Plan Verified & Ready
+                </span>
               </div>
 
-              {decisionState === 'pending' ? (
-                <div className="grid grid-cols-2 gap-3 pt-1">
-                  <button
-                    onClick={handleRejectOrder}
-                    className="py-2 px-3 rounded-lg border border-slate-300 hover:bg-slate-100 text-xs font-semibold text-slate-700 transition-colors text-center flex items-center justify-center gap-1"
-                  >
-                    <X className="w-3.5 h-3.5" />
-                    <span>Reject</span>
-                  </button>
-
-                  <button
-                    onClick={handleApproveOrder}
-                    className="py-2 px-3 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-sm transition-colors text-center flex items-center justify-center gap-1.5"
-                  >
-                    <Check className="w-4 h-4" />
-                    <span>Approve Order</span>
-                  </button>
+              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 flex items-center justify-between text-xs">
+                <div>
+                  <span className="text-slate-500 block text-[11px]">Assigned Procurement Authority:</span>
+                  <span className="font-semibold text-slate-800">Dr. Sarah Jenkins (Chief Medical Officer)</span>
                 </div>
-              ) : decisionState === 'approved' ? (
-                <div className="p-3 bg-emerald-50 rounded-lg border border-emerald-200 flex items-center gap-2 text-xs font-bold text-emerald-800">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>ORDER APPROVED — Purchase Order Dispatched to {selectedPreset.supplierName}</span>
-                </div>
-              ) : (
-                <div className="p-3 bg-rose-50 rounded-lg border border-rose-200 flex items-center gap-2 text-xs font-bold text-rose-800">
-                  <X className="w-4 h-4 text-rose-600 shrink-0" />
-                  <span>ORDER REJECTED — Sent to Clinical Committee Review</span>
-                </div>
-              )}
+                <Link
+                  href="/ledger"
+                  className="px-3.5 py-1.5 rounded-xl bg-[#cbd5e1] hover:bg-[#ec4899] text-slate-900 text-xs font-black transition flex items-center gap-1 shrink-0 shadow-xs"
+                >
+                  <span>View in On-Chain Ledger</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* 3. Multi-Factor Supplier Comparison Matrix */}
-      <div className="bg-white rounded-xl border border-[#DDE9E2] shadow-sm overflow-hidden">
+      <div className="bg-white rounded-xl border border-[#cbd5e1] shadow-sm overflow-hidden">
         <div className="p-5 border-b border-slate-100 flex items-center justify-between">
           <div>
             <h3 className="font-bold text-sm text-slate-900">Multi-Factor Supplier Evaluation Matrix</h3>
@@ -499,7 +486,7 @@ export default function ProcurementPage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
-            <thead className="bg-[#F2F4F3] border-b border-[#DDE9E2] text-xs font-semibold text-slate-500 uppercase tracking-wider">
+            <thead className="bg-[#ffffff] border-b border-[#cbd5e1] text-xs font-semibold text-slate-500 uppercase tracking-wider">
               <tr>
                 <th className="px-5 py-3.5">Supplier</th>
                 <th className="px-4 py-3.5 text-right">Unit Price</th>
@@ -513,11 +500,11 @@ export default function ProcurementPage() {
             </thead>
             <tbody className="divide-y divide-slate-100">
               {/* Row 1: Top Recommended Supplier */}
-              <tr className="bg-teal-50/30 hover:bg-teal-50/60 transition-colors">
+              <tr className="bg-pink-50/30 hover:bg-pink-50/60 transition-colors">
                 <td className="px-5 py-3.5 font-bold text-slate-900">
                   <div className="flex items-center gap-2">
                     <span>{selectedPreset.supplierName}</span>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-teal-600 text-white">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-pink-600 text-white">
                       TOP RECOMMENDED
                     </span>
                   </div>
@@ -525,23 +512,23 @@ export default function ProcurementPage() {
                 <td className="px-4 py-3.5 text-right font-bold text-slate-900">
                   ${selectedPreset.unitPrice.toFixed(2)}
                 </td>
-                <td className="px-4 py-3.5 text-center font-medium text-emerald-700">
+                <td className="px-4 py-3.5 text-center font-medium text-slate-600">
                   5,000+ units in stock
                 </td>
                 <td className="px-4 py-3.5 text-center font-semibold text-slate-900">
                   {selectedPreset.deliveryDays} Days
                 </td>
-                <td className="px-4 py-3.5 text-center font-bold text-emerald-600">
+                <td className="px-4 py-3.5 text-center font-bold text-slate-500">
                   {selectedPreset.reliability}%
                 </td>
                 <td className="px-4 py-3.5 text-center text-xs text-slate-700">
                   FDA / ISO 13485 Certified
                 </td>
-                <td className="px-4 py-3.5 text-right font-black text-teal-700 text-sm">
+                <td className="px-4 py-3.5 text-right font-black text-pink-700 text-sm">
                   {selectedPreset.supplierScore} / 100
                 </td>
                 <td className="px-5 py-3.5 text-center">
-                  <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-teal-100 text-teal-800">
+                  <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-pink-100 text-pink-800">
                     Selected
                   </span>
                 </td>
@@ -591,4 +578,5 @@ export default function ProcurementPage() {
     </div>
   );
 }
+
 

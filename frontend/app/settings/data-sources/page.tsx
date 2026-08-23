@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -32,7 +32,7 @@ interface DataSource {
 const fallbackDataSources: DataSource[] = [
   {
     id: 'ds-india-nhp-001',
-    sourceName: 'Government of India — National Health Portal (NHP)',
+    sourceName: 'Government of India â€” National Health Portal (NHP)',
     sourceUrl: 'https://data.gov.in/sector/health-and-family-welfare',
     datasetName: 'National Hospital Directory & Clinical Consumable Norms',
     description: 'Official Government of India public directory covering tertiary healthcare facilities, district hospitals, and standardized consumption benchmarks.',
@@ -117,7 +117,7 @@ export default function DataSourcesPage() {
               : s
           )
         );
-        setToastMessage(`✓ ${json.data?.datasetName || 'Dataset'} synchronized successfully.`);
+        setToastMessage(`âœ“ ${json.data?.datasetName || 'Dataset'} synchronized successfully.`);
       } else {
         setToastMessage('Synchronization complete.');
       }

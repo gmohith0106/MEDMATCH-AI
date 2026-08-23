@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -17,7 +17,10 @@ import {
   Loader2,
   RefreshCw,
   ArrowRight,
-  RotateCcw
+  RotateCcw,
+  Bot,
+  Cpu,
+  Layers
 } from 'lucide-react';
 
 import { useAuth } from '@/context/AuthContext';
@@ -139,12 +142,12 @@ export function PaymentTable() {
 
   return (
     <div className="space-y-6">
-      {/* 1. Truthful Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-white rounded-xl p-5 border border-[#DDE9E2] shadow-sm">
+      {/* 1. M2M Architecture & Truthful Stat Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="bg-white rounded-xl p-5 border border-[#cbd5e1] shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Verified Payments</span>
-            <div className="p-2 rounded-lg bg-emerald-50 text-emerald-700">
+            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">M2M Settlements</span>
+            <div className="p-2 rounded-lg bg-slate-100 text-slate-600">
               <CheckCircle2 className="w-4 h-4" />
             </div>
           </div>
@@ -152,31 +155,44 @@ export function PaymentTable() {
           <p className="text-xs text-slate-500 mt-1">Confirmed on Algorand TestNet</p>
         </div>
 
-        <div className="bg-white rounded-xl p-5 border border-[#DDE9E2] shadow-sm">
+        <div className="bg-white rounded-xl p-5 border border-[#cbd5e1] shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Pending Payments</span>
-            <div className="p-2 rounded-lg bg-amber-50 text-amber-700">
-              <Clock className="w-4 h-4" />
+            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Execution Mode</span>
+            <div className="p-2 rounded-lg bg-pink-50 text-pink-700">
+              <Bot className="w-4 h-4" />
             </div>
           </div>
-          <p className="text-2xl font-bold text-slate-900">{pendingCount}</p>
-          <p className="text-xs text-slate-500 mt-1">Unpaid or Settlement Pending</p>
+          <p className="text-lg font-bold text-slate-900 flex items-center gap-1.5">
+            <span>Machine-to-Machine</span>
+          </p>
+          <p className="text-xs text-pink-700 font-medium mt-1">Autonomous Agent Signer</p>
         </div>
 
-        <div className="bg-white rounded-xl p-5 border border-[#DDE9E2] shadow-sm">
+        <div className="bg-white rounded-xl p-5 border border-[#cbd5e1] shadow-sm">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Protocol Scheme</span>
+            <div className="p-2 rounded-lg bg-indigo-50 text-indigo-700">
+              <Layers className="w-4 h-4" />
+            </div>
+          </div>
+          <p className="text-lg font-bold text-slate-900">x402 ExactAvm</p>
+          <p className="text-xs text-slate-500 mt-1">Zero Browser Keys â€¢ Non-Custodial</p>
+        </div>
+
+        <div className="bg-white rounded-xl p-5 border border-[#cbd5e1] shadow-sm">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Spend Policy Guardrail</span>
-            <div className="p-2 rounded-lg bg-teal-50 text-teal-700">
+            <div className="p-2 rounded-lg bg-pink-50 text-pink-700">
               <ShieldCheck className="w-4 h-4" />
             </div>
           </div>
-          <p className="text-2xl font-bold text-teal-700">0.02 USDC</p>
-          <p className="text-xs text-slate-500 mt-1">Max Cap $0.05 • Non-Custodial</p>
+          <p className="text-2xl font-bold text-pink-700">0.001 USDC</p>
+          <p className="text-xs text-slate-500 mt-1">Max Cap $0.05 â€¢ Auto-Approved</p>
         </div>
       </div>
 
       {/* 2. Filters & Search */}
-      <div className="bg-white rounded-xl border border-[#DDE9E2] p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="bg-white rounded-xl border border-[#cbd5e1] p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="relative flex-1 w-full">
           <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
@@ -184,12 +200,12 @@ export function PaymentTable() {
             placeholder="Search by product, supplier, or transaction ID..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 rounded-lg border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 bg-white"
+            className="w-full pl-9 pr-4 py-2 rounded-lg border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 bg-white"
           />
         </div>
 
         <div className="flex items-center gap-2 w-full sm:w-auto">
-          <div className="flex items-center gap-1.5 bg-[#E8F1EC]/60 px-3 py-1.5 rounded-lg border border-[#DDE9E2] text-xs">
+          <div className="flex items-center gap-1.5 bg-[#f1f5f9]/60 px-3 py-1.5 rounded-lg border border-[#cbd5e1] text-xs">
             <Filter className="w-3.5 h-3.5 text-slate-500" />
             <span className="text-slate-600 font-medium">Status:</span>
             <select
@@ -219,31 +235,31 @@ export function PaymentTable() {
       {feedbackMessage && (
         <div className={`p-3 rounded-lg text-xs font-semibold flex items-center gap-2 ${
           feedbackMessage.type === 'success'
-            ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+            ? 'bg-slate-100 text-slate-700 border border-slate-300'
             : feedbackMessage.type === 'error'
             ? 'bg-rose-50 text-rose-800 border border-rose-200'
-            : 'bg-teal-50 text-teal-800 border border-teal-200'
+            : 'bg-pink-50 text-pink-800 border border-pink-200'
         }`}>
           {feedbackMessage.type === 'success' ? (
-            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+            <CheckCircle2 className="w-4 h-4 text-slate-500" />
           ) : feedbackMessage.type === 'error' ? (
             <AlertCircle className="w-4 h-4 text-rose-600" />
           ) : (
-            <Loader2 className="w-4 h-4 text-teal-600 animate-spin" />
+            <Loader2 className="w-4 h-4 text-pink-600 animate-spin" />
           )}
           <span>{feedbackMessage.text}</span>
         </div>
       )}
 
       {/* 3. Simple Hospital Payments Table: Date | Product | Supplier | Amount | Status | Action */}
-      <div className="bg-white rounded-xl border border-[#DDE9E2] shadow-sm overflow-hidden">
+      <div className="bg-white rounded-xl border border-[#cbd5e1] shadow-sm overflow-hidden">
         {isLoading ? (
           <div className="p-12 text-center text-xs text-slate-500 flex flex-col items-center justify-center space-y-2">
-            <Loader2 className="w-6 h-6 text-teal-600 animate-spin" />
+            <Loader2 className="w-6 h-6 text-pink-600 animate-spin" />
             <p>Loading payments from database...</p>
           </div>
         ) : filteredPayments.length === 0 ? (
-          <div className="p-16 text-center text-xs text-slate-500 space-y-2 bg-[#F2F4F3]/30">
+          <div className="p-16 text-center text-xs text-slate-500 space-y-2 bg-[#ffffff]/30">
             <CreditCard className="w-10 h-10 mx-auto text-slate-300 mb-2" />
             <h3 className="font-bold text-sm text-slate-800">No payments found</h3>
             <p className="max-w-md mx-auto text-slate-500 text-xs">
@@ -252,7 +268,7 @@ export function PaymentTable() {
             <div className="pt-2">
               <Link
                 href="/procurement"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold transition-colors shadow-sm"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-pink-600 hover:bg-pink-700 text-white text-xs font-semibold transition-colors shadow-sm"
               >
                 <span>Launch Procurement Agent</span>
               </Link>
@@ -261,11 +277,12 @@ export function PaymentTable() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#F2F4F3] border-b border-[#DDE9E2] text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
+              <thead className="bg-[#ffffff] border-b border-[#cbd5e1] text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
                 <tr>
                   <th className="px-5 py-3.5">Date</th>
                   <th className="px-4 py-3.5">Product</th>
                   <th className="px-4 py-3.5">Supplier</th>
+                  <th className="px-4 py-3.5">Execution</th>
                   <th className="px-4 py-3.5 text-right">Amount</th>
                   <th className="px-4 py-3.5 text-center">Status</th>
                   <th className="px-5 py-3.5 text-right">Action</th>
@@ -287,7 +304,7 @@ export function PaymentTable() {
                     : 'Recent';
 
                   return (
-                    <tr key={payment.id} className="hover:bg-[#E8F1EC]/30 transition-colors">
+                    <tr key={payment.id} className="hover:bg-[#f1f5f9]/30 transition-colors">
                       {/* 1. Date */}
                       <td className="px-5 py-3.5 font-medium text-slate-600 whitespace-nowrap">
                         {formattedDate}
@@ -303,7 +320,15 @@ export function PaymentTable() {
                         {supplierName}
                       </td>
 
-                      {/* 4. Amount */}
+                      {/* 4. Execution Mode */}
+                      <td className="px-4 py-3.5 whitespace-nowrap">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-pink-50 text-pink-800 border border-pink-200">
+                          <Bot className="w-3 h-3 text-pink-600" />
+                          <span>M2M x402</span>
+                        </span>
+                      </td>
+
+                      {/* 5. Amount */}
                       <td className="px-4 py-3.5 text-right font-black text-slate-900 whitespace-nowrap">
                         {formatUsdcAmount(payment.amount)}
                       </td>
@@ -311,13 +336,13 @@ export function PaymentTable() {
                       {/* 5. Status */}
                       <td className="px-4 py-3.5 text-center whitespace-nowrap">
                         {isVerified ? (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-600 border border-slate-300">
+                            <CheckCircle2 className="w-3 h-3 text-slate-500" />
                             Verified
                           </span>
                         ) : isProcessing ? (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-[11px] font-bold bg-teal-50 text-teal-700 border border-teal-200">
-                            <Loader2 className="w-3 h-3 text-teal-600 animate-spin" />
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-[11px] font-bold bg-pink-50 text-pink-700 border border-pink-200">
+                            <Loader2 className="w-3 h-3 text-pink-600 animate-spin" />
                             Processing
                           </span>
                         ) : isSettlementPending ? (
@@ -349,23 +374,24 @@ export function PaymentTable() {
                               >
                                 View Details
                               </Link>
-                              {loraUrl && isAlgorandTxId(payment.transactionId) && (
+                              {loraUrl && isAlgorandTxId(payment.transactionId) && payment.verified && (
                                 <a
                                   href={loraUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-teal-200 bg-teal-50 hover:bg-teal-100 text-teal-800 text-xs font-semibold transition-colors"
-                                  title="View on Lora TestNet Explorer"
+                                  className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-pink-200 bg-pink-50 hover:bg-pink-100 text-pink-800 text-xs font-semibold transition-colors"
+                                  title="Verify this confirmed payment on Lora TestNet Explorer"
                                 >
-                                  <span>Lora</span>
-                                  <ExternalLink className="w-3 h-3 text-teal-700" />
+                                  <ShieldCheck className="w-3 h-3 text-pink-700" />
+                                  <span>Confirmed on Lora</span>
+                                  <ExternalLink className="w-3 h-3 text-pink-700" />
                                 </a>
                               )}
                             </>
                           ) : isProcessing ? (
                             <button
                               disabled
-                              className="px-3 py-1.5 rounded-lg bg-teal-100 text-teal-800 text-xs font-semibold cursor-not-allowed flex items-center gap-1"
+                              className="px-3 py-1.5 rounded-lg bg-pink-100 text-pink-800 text-xs font-semibold cursor-not-allowed flex items-center gap-1"
                             >
                               <Loader2 className="w-3 h-3 animate-spin" />
                               <span>Processing...</span>
@@ -392,7 +418,7 @@ export function PaymentTable() {
                             <button
                               onClick={() => handlePayNow(payment.id)}
                               disabled={Boolean(processingId)}
-                              className="px-3 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition-all shadow-xs disabled:opacity-50 flex items-center gap-1"
+                              className="px-3 py-1.5 rounded-lg bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold transition-all shadow-xs disabled:opacity-50 flex items-center gap-1"
                             >
                               <span>Pay Now</span>
                               <ArrowRight className="w-3 h-3" />

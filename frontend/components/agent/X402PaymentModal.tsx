@@ -1,9 +1,11 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import { useDemo } from '@/context/DemoContext';
 import { formatAlgorandAddress, getAlgorandExplorerUrl, formatUsdcAmount } from '@/lib/x402';
-import { verifyPayment, requestPayment } from '@/lib/api';
+import { requestPayment, verifyPayment, submitPayment } from '@/lib/api';
+import algosdk from 'algosdk';
+import { getPeraWallet } from '../blockchain/WalletConnectButton';
 import {
   CreditCard,
   CheckCircle2,
@@ -59,7 +61,7 @@ export function X402PaymentModal() {
       // If no payment record exists, request one from backend
       if (!targetPaymentId) {
         const req = await requestPayment({
-          amount: 0.02,
+          amount: 0.001,
           asset: 'USDC',
           currency: 'USD',
           purpose: 'Autonomous Agent Tier-1 Supplier Intelligence Oracle Fee',
@@ -70,8 +72,69 @@ export function X402PaymentModal() {
 
       setPaymentStatus('SETTLEMENT_PENDING');
 
-      // Call real on-chain verification endpoint
-      const result = await verifyPayment(targetPaymentId);
+      // Try Pera Wallet first
+      const wallet = getPeraWallet();
+      const accounts = wallet?.connector?.accounts || [];
+      if (!accounts.length) {
+        setErrorMessage('Please connect your Pera Wallet first via the top navigation bar.');
+        setIsProcessing(false);
+        setPaymentStatus('PAYMENT_REQUIRED');
+        return;
+      }
+      const sender = accounts[0];
+
+      const rcvr = receiverAddress || 'IWOSB3QY3C3OUMV74HMWCY4HN76DBP4EN2SEMAKYK4U4LEINNT64RZFNCU';
+
+      // Get params
+      const paramsRes = await fetch('https://testnet-api.algonode.cloud/v2/transactions/params');
+      const paramsObj = await paramsRes.json();
+      const suggestedParams: algosdk.SuggestedParams = {
+        fee: paramsObj.fee,
+        genesisHash: paramsObj['genesis-hash'],
+        genesisID: paramsObj['genesis-id'],
+        firstValid: paramsObj['last-round'],
+        lastValid: paramsObj['last-round'] + 1000,
+        minFee: paramsObj['min-fee'],
+        flatFee: false,
+      };
+
+      const txn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
+        sender,
+        receiver: rcvr,
+        amount: 1000, // 0.001 USDC (6 decimals)
+        assetIndex: 10458941,
+        suggestedParams
+      });
+
+      const txGroup = [{ txn, signers: [sender] }];
+      const signedTxn = await wallet!.signTransaction([txGroup]);
+
+      // Submit to network
+      const submitRes = await fetch('https://testnet-api.algonode.cloud/v2/transactions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-binary',
+        },
+        body: signedTxn[0] as unknown as BodyInit
+      });
+
+      if (!submitRes.ok) {
+        throw new Error('Failed to submit transaction to Algorand network');
+      }
+
+      const txResponse = await submitRes.json();
+      const txId = txResponse.txId;
+
+      // Tell backend we submitted it
+      await submitPayment({
+         paymentId: targetPaymentId,
+         transactionId: txId,
+         senderAddress: sender,
+         receiverAddress: rcvr
+      });
+
+      // Then verify
+      const result = await verifyPayment(targetPaymentId, txId);
 
       if (result && (result.status === 'PAYMENT_SETTLED' || result.status === 'PAYMENT_VERIFIED' || result.verified || result.status === 'VERIFIED')) {
         setPaymentStatus('VERIFIED');
@@ -87,34 +150,28 @@ export function X402PaymentModal() {
         setErrorMessage('USER ACTION REQUIRED: Add funded Account 1 mnemonic (AVM_MNEMONIC) in backend .env to complete on-chain TestNet settlement.');
         setIsProcessing(false);
       } else {
-        // Continue with client flow if backend is executing autonomously
-        setPaymentStatus('VERIFIED');
-        setTimeout(async () => {
-          setIsProcessing(false);
-          await continuePaymentFlow();
-        }, 800);
+        setPaymentStatus('PAYMENT_REQUIRED');
+        setErrorMessage('Payment verification failed. Please try again.');
+        setIsProcessing(false);
       }
     } catch (err: any) {
-      console.warn('[PaymentModal] Payment execution note:', err);
-      // Let the flow continue gracefully
-      setPaymentStatus('VERIFIED');
-      setTimeout(async () => {
-        setIsProcessing(false);
-        await continuePaymentFlow();
-      }, 800);
+      console.warn('[PaymentModal] Payment execution error:', err);
+      setPaymentStatus('PAYMENT_REQUIRED');
+      setErrorMessage(err.message || 'Payment execution failed. Did you reject the signature?');
+      setIsProcessing(false);
     }
   };
 
   return (
     <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div className="bg-white rounded-2xl w-full max-w-lg shadow-2xl border border-[#DDE9E2] overflow-hidden animate-in zoom-in-95 duration-200">
+      <div className="bg-white rounded-2xl w-full max-w-lg shadow-2xl border border-[#cbd5e1] overflow-hidden animate-in zoom-in-95 duration-200">
         {/* Top Accent Strip */}
-        <div className="h-1.5 bg-gradient-to-r from-teal-600 via-emerald-500 to-teal-400 w-full" />
+        <div className="h-1.5 bg-gradient-to-r from-pink-600 via-slate-400 to-pink-400 w-full" />
 
         {/* Modal Header */}
         <div className="p-6 bg-white border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+            <div className="w-10 h-10 rounded-xl bg-pink-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">
               <CreditCard className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -122,12 +179,12 @@ export function X402PaymentModal() {
                 <h3 className="font-bold text-base text-slate-900">
                   Payment Required
                 </h3>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200 uppercase">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-pink-50 text-pink-700 border border-pink-200 uppercase">
                   HTTP 402
                 </span>
               </div>
               <p className="text-xs text-slate-500 font-medium">
-                Supplier Intelligence • Algorand TestNet
+                Supplier Intelligence â€¢ Algorand TestNet
               </p>
             </div>
           </div>
@@ -147,27 +204,27 @@ export function X402PaymentModal() {
           </p>
 
           {/* Payment Requirement Specs Card */}
-          <div className="p-4 rounded-xl bg-[#E8F1EC]/50 border border-[#DDE9E2] space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-[#DDE9E2]">
+          <div className="p-4 rounded-xl bg-[#f1f5f9]/50 border border-[#cbd5e1] space-y-3">
+            <div className="flex items-center justify-between pb-2 border-b border-[#cbd5e1]">
               <span className="text-xs text-slate-500 font-semibold">Service:</span>
               <span className="text-xs font-bold text-slate-900">
                 Supplier Intelligence Stream
               </span>
             </div>
 
-            <div className="flex items-center justify-between pb-2 border-b border-[#DDE9E2]">
+            <div className="flex items-center justify-between pb-2 border-b border-[#cbd5e1]">
               <span className="text-xs text-slate-500 font-semibold">Authoritative Price:</span>
               <div className="text-right">
                 <span className="font-extrabold text-base text-slate-900">
-                  0.02 USDC
+                  0.001 USDC
                 </span>
                 <span className="text-[11px] text-slate-500 font-mono ml-1">
-                  ($0.02 USD)
+                  ($0.001 USD)
                 </span>
               </div>
             </div>
 
-            <div className="flex items-center justify-between pb-2 border-b border-[#DDE9E2]">
+            <div className="flex items-center justify-between pb-2 border-b border-[#cbd5e1]">
               <span className="text-xs text-slate-500 font-semibold">Receiver Public Address:</span>
               <div className="flex items-center gap-1.5 font-mono text-xs text-slate-800">
                 <span>{receiverAddress ? formatAlgorandAddress(receiverAddress, 5) : 'Hospital Supplier Gateway'}</span>
@@ -177,7 +234,7 @@ export function X402PaymentModal() {
                     className="p-0.5 text-slate-400 hover:text-slate-600"
                     title="Copy Receiver Address"
                   >
-                    {copied ? <Check className="w-3 h-3 text-emerald-500" /> : <Copy className="w-3 h-3" />}
+                    {copied ? <Check className="w-3 h-3 text-slate-400" /> : <Copy className="w-3 h-3" />}
                   </button>
                 )}
               </div>
@@ -185,8 +242,8 @@ export function X402PaymentModal() {
 
             <div className="flex items-center justify-between">
               <span className="text-xs text-slate-500 font-semibold">Settlement Network:</span>
-              <span className="text-xs font-bold text-teal-700 flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-teal-600" />
+              <span className="text-xs font-bold text-pink-700 flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5 text-pink-600" />
                 Algorand TestNet
               </span>
             </div>
@@ -194,11 +251,11 @@ export function X402PaymentModal() {
 
           {/* Processing / Verifying Feedback */}
           {paymentStatus === 'PAYMENT_PROCESSING' && (
-            <div className="p-3.5 rounded-xl bg-teal-50 border border-teal-200 flex items-center gap-3">
-              <Loader2 className="w-5 h-5 text-teal-600 animate-spin shrink-0" />
+            <div className="p-3.5 rounded-xl bg-pink-50 border border-pink-200 flex items-center gap-3">
+              <Loader2 className="w-5 h-5 text-pink-600 animate-spin shrink-0" />
               <div>
-                <p className="text-xs font-bold text-teal-900">Processing Payment...</p>
-                <p className="text-[11px] text-teal-700">
+                <p className="text-xs font-bold text-pink-900">Processing Payment...</p>
+                <p className="text-[11px] text-pink-700">
                   Server-side AVM signer is authorizing transaction...
                 </p>
               </div>
@@ -206,11 +263,11 @@ export function X402PaymentModal() {
           )}
 
           {paymentStatus === 'SETTLEMENT_PENDING' && (
-            <div className="p-3.5 rounded-xl bg-teal-50 border border-teal-200 flex items-center gap-3">
-              <Loader2 className="w-5 h-5 text-teal-600 animate-spin shrink-0" />
+            <div className="p-3.5 rounded-xl bg-pink-50 border border-pink-200 flex items-center gap-3">
+              <Loader2 className="w-5 h-5 text-pink-600 animate-spin shrink-0" />
               <div>
-                <p className="text-xs font-bold text-teal-900">Confirming on Algorand...</p>
-                <p className="text-[11px] text-teal-700">
+                <p className="text-xs font-bold text-pink-900">Confirming on Algorand...</p>
+                <p className="text-[11px] text-pink-700">
                   Verifying consensus round settlement via GoPlausible facilitator...
                 </p>
               </div>
@@ -218,15 +275,15 @@ export function X402PaymentModal() {
           )}
 
           {paymentStatus === 'VERIFIED' && (
-            <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 space-y-2">
+            <div className="p-3.5 rounded-xl bg-slate-100 border border-slate-300 space-y-2">
               <div className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-slate-500 shrink-0" />
                 <div>
-                  <p className="text-xs font-bold text-emerald-900">
+                  <p className="text-xs font-bold text-slate-800">
                     Payment Verified & Settled
                   </p>
-                  <p className="text-[11px] text-emerald-700">
-                    Settlement verified on Algorand TestNet • Supplier intelligence unlocked.
+                  <p className="text-[11px] text-slate-600">
+                    Settlement verified on Algorand TestNet â€¢ Supplier intelligence unlocked.
                   </p>
                 </div>
               </div>
@@ -256,7 +313,7 @@ export function X402PaymentModal() {
             <button
               onClick={handleAuthorizeAndVerify}
               disabled={isProcessing}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-sm transition-all disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold shadow-sm transition-all disabled:opacity-50"
             >
               {isProcessing ? (
                 <>
@@ -264,10 +321,10 @@ export function X402PaymentModal() {
                   <span>Processing Payment...</span>
                 </>
               ) : (
-                <>
-                  <span>Pay 0.02 USDC</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </>
+                  <>
+                    <span>Pay 0.001 USDC</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </>
               )}
             </button>
           </div>

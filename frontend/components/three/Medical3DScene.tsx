@@ -385,7 +385,7 @@ export function Medical3DScene({
           <span className="w-2 h-2 rounded-full bg-[#10b981] animate-ping" />
           <span className="font-semibold text-[#e3577c]">x402 ORACLE ENGINE</span>
           <span className="text-white/40">|</span>
-          <span className="text-emerald-400">ONLINE</span>
+          <span className="text-slate-400">ONLINE</span>
         </div>
 
         <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#38bdf8]/40 text-xs font-mono text-[#38bdf8] shadow-lg">
@@ -399,7 +399,7 @@ export function Medical3DScene({
       <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
         <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 text-xs font-mono text-gray-300">
           <span>Latency:</span>
-          <span className="text-emerald-400 font-bold">{networkPing}ms</span>
+          <span className="text-slate-400 font-bold">{networkPing}ms</span>
           <span className="text-white/20">•</span>
           <span>Nodes:</span>
           <span className="text-[#38bdf8] font-bold">{nodeCount} Live</span>

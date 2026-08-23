@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -28,7 +28,7 @@ export default function PaymentProcessingPage() {
 
   const handlePay = () => {
     setStep('SUBMITTING');
-    addToast('Broadcasting 0.02 ALGO payment transaction to Algorand TestNet...', 'info');
+    addToast('Broadcasting 0.001 ALGO payment transaction to Algorand TestNet...', 'info');
 
     setTimeout(() => {
       setStep('VERIFYING');
@@ -88,8 +88,8 @@ export default function PaymentProcessingPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
             <div>
               <span className="text-[#667085] block text-[10px] uppercase font-bold">Required Amount</span>
-              <span className="font-bold text-[#24324a] text-sm">0.02 ALGO</span>
-              <span className="text-[10px] text-[#667085] block">($0.02 USD)</span>
+              <span className="font-bold text-[#24324a] text-sm">0.001 ALGO</span>
+              <span className="text-[10px] text-[#667085] block">($0.001 USD)</span>
             </div>
             <div>
               <span className="text-[#667085] block text-[10px] uppercase font-bold">Asset Type</span>
@@ -110,7 +110,7 @@ export default function PaymentProcessingPage() {
         <div className="space-y-3 text-xs">
           <div className="flex items-center justify-between p-3.5 rounded border border-[#ffc8d3] bg-white">
             <span className="font-bold text-[#24324a]">1. Receive HTTP 402 Challenge</span>
-            <span className="font-bold text-emerald-600 flex items-center gap-1">
+            <span className="font-bold text-slate-500 flex items-center gap-1">
               <CheckCircle2 className="w-4 h-4" /> Ready
             </span>
           </div>
@@ -122,7 +122,7 @@ export default function PaymentProcessingPage() {
                 <Clock className="w-4 h-4" /> Broadcasting...
               </span>
             ) : step === 'VERIFYING' || step === 'SETTLED' ? (
-              <span className="font-bold text-emerald-600 flex items-center gap-1">
+              <span className="font-bold text-slate-500 flex items-center gap-1">
                 <CheckCircle2 className="w-4 h-4" /> Broadcast Complete
               </span>
             ) : (
@@ -137,7 +137,7 @@ export default function PaymentProcessingPage() {
                 <Clock className="w-4 h-4" /> Verifying On-Chain...
               </span>
             ) : step === 'SETTLED' ? (
-              <span className="font-bold text-emerald-600 flex items-center gap-1">
+              <span className="font-bold text-slate-500 flex items-center gap-1">
                 <CheckCircle2 className="w-4 h-4" /> Verified & Settled
               </span>
             ) : (
@@ -169,7 +169,7 @@ export default function PaymentProcessingPage() {
               onClick={handlePay}
               className="px-6 py-2.5 rounded bg-[#e3577c] hover:bg-[#e27094] disabled:opacity-50 text-white text-xs font-bold shadow-soft transition-all"
             >
-              Authorize & Settle 0.02 ALGO
+              Authorize & Settle 0.001 ALGO
             </button>
           )}
         </div>

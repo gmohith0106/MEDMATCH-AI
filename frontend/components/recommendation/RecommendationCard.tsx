@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { useDemo } from '@/context/DemoContext';
@@ -73,7 +73,7 @@ export function RecommendationCard() {
           <h4 className="font-heading font-extrabold text-lg text-[#24324a]">
             {rec?.quantity || target.recommendedQty} units
           </h4>
-          <span className="text-[11px] text-[#667085] font-medium">@ ₹{(rec?.unitPrice || 9.50).toFixed(2)} / unit</span>
+          <span className="text-[11px] text-[#667085] font-medium">@ â‚¹{(rec?.unitPrice || 9.50).toFixed(2)} / unit</span>
         </div>
 
         <div className="p-4 rounded-btn bg-[#fff5f7] border border-[#ffc8d3]">
@@ -81,11 +81,11 @@ export function RecommendationCard() {
             Estimated Cost
           </span>
           <h4 className="font-heading font-extrabold text-xl text-[#24324a]">
-            ₹{(rec?.totalCost || 1900).toLocaleString()}
+            â‚¹{(rec?.totalCost || 1900).toLocaleString()}
           </h4>
           <span className="text-[11px] font-bold text-[#e27094] flex items-center gap-1">
             <PiggyBank className="w-3.5 h-3.5 text-[#e27094]" />
-            ₹{rec?.estimatedSavings || 420} Estimated Savings
+            â‚¹{rec?.estimatedSavings || 420} Estimated Savings
           </span>
         </div>
 

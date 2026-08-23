@@ -2,7 +2,11 @@ import fs from 'fs';
 import path from 'path';
 
 describe('Test 5 — Zero Frontend & Repository Secret Exposure Audit', () => {
-  const frontendDir = path.resolve(__dirname, '../../MEDMATCH AI FRONTEND');
+  const frontendDir = fs.existsSync(path.resolve(__dirname, '../../frontend'))
+    ? path.resolve(__dirname, '../../frontend')
+    : fs.existsSync(path.resolve(__dirname, '../frontend'))
+    ? path.resolve(__dirname, '../frontend')
+    : path.resolve(__dirname, '../../MEDMATCH AI FRONTEND');
   const backendDir = path.resolve(__dirname, '..');
 
   function scan(dir: string, patterns: RegExp[]): { file: string; match: string }[] {

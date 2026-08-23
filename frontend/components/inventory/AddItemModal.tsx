@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { useDemo } from '@/context/DemoContext';
@@ -103,7 +103,7 @@ export function AddItemModal({
           {/* 1-Click Clinical Quick Templates */}
           <div className="space-y-1.5 pb-2 border-b border-[#ffc8d3]">
             <label className="block text-[11px] font-bold text-[#667085] uppercase tracking-wider">
-              ⚡ Quick Fill Presets:
+              âš¡ Quick Fill Presets:
             </label>
             <div className="flex flex-wrap gap-1.5">
               {[
@@ -227,7 +227,7 @@ export function AddItemModal({
 
           <div>
             <label className="block text-xs font-bold text-[#24324a] uppercase tracking-wider mb-1.5">
-              Unit Cost (₹)
+              Unit Cost (â‚¹)
             </label>
             <input
               type="number"

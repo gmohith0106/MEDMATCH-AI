@@ -42,7 +42,7 @@ export default function AgentRunDetailPage() {
       id: 'step-3',
       title: '3. HTTP 402 Payment Challenge & Algorand Micropayment Settlement',
       status: 'COMPLETED',
-      detail: 'Received HTTP 402 from Tier-1 Supplier Oracle endpoint. Settled 0.02 ALGO micropayment non-custodially on Algorand TestNet (TxID: WXYZ7492842JFKALGORANDTESTNETTXN7489).',
+      detail: 'Received HTTP 402 from Tier-1 Supplier Oracle endpoint. Settled 0.001 ALGO micropayment non-custodially on Algorand TestNet (TxID: WXYZ7492842JFKALGORANDTESTNETTXN7489).',
       duration: '1,240ms',
       paymentLinked: true,
     },

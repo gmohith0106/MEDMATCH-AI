@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -108,7 +108,7 @@ export function HeroWorkflow() {
 
                     {index < flowNodes.length - 1 && (
                       <div className="hidden sm:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 text-[#667085] font-bold">
-                        →
+                        â†’
                       </div>
                     )}
                   </div>

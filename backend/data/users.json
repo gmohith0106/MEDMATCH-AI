@@ -1,0 +1,15 @@
+[
+  {
+    "uid": "staff-procurement-001",
+    "name": "Procurement Officer",
+    "email": "procurement@citycare.hospital",
+    "role": "PROCUREMENT_STAFF",
+    "department": "Procurement & Logistics",
+    "hospitalName": "CityCare General Hospital",
+    "hospitalId": "hospital-citycare-001",
+    "status": "ACTIVE",
+    "createdAt": "2026-08-23T07:28:01.108Z",
+    "updatedAt": "2026-08-23T07:28:01.108Z",
+    "lastLoginAt": "2026-08-23T07:28:01.108Z"
+  }
+]

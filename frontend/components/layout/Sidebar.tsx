@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -13,6 +13,11 @@ import {
   Building2,
   Home,
   Users,
+  Award,
+  ShoppingBag,
+  Layers,
+  ShieldCheck,
+  Wallet
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 
@@ -25,7 +30,7 @@ interface NavItem {
 
 const allNavItems: NavItem[] = [
   {
-    name: 'Overview',
+    name: 'Dashboard',
     href: '/dashboard',
     icon: LayoutDashboard,
     roles: ['ADMIN', 'PROCUREMENT_STAFF', 'INVENTORY_STAFF', 'MANAGER']
@@ -37,13 +42,13 @@ const allNavItems: NavItem[] = [
     roles: ['ADMIN', 'INVENTORY_STAFF', 'MANAGER']
   },
   {
-    name: 'Forecasting',
-    href: '/forecast',
-    icon: TrendingUp,
-    roles: ['ADMIN', 'INVENTORY_STAFF', 'MANAGER']
+    name: 'Orders',
+    href: '/orders',
+    icon: ShoppingBag,
+    roles: ['ADMIN', 'PROCUREMENT_STAFF', 'MANAGER']
   },
   {
-    name: 'Procurement',
+    name: 'Agent Workflow',
     href: '/procurement',
     icon: Bot,
     roles: ['ADMIN', 'PROCUREMENT_STAFF', 'MANAGER']
@@ -52,12 +57,6 @@ const allNavItems: NavItem[] = [
     name: 'Suppliers',
     href: '/suppliers',
     icon: Truck,
-    roles: ['ADMIN', 'PROCUREMENT_STAFF', 'MANAGER']
-  },
-  {
-    name: 'Payments',
-    href: '/payments',
-    icon: CreditCard,
     roles: ['ADMIN', 'PROCUREMENT_STAFF', 'MANAGER']
   },
   {
@@ -94,11 +93,11 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
       {/* Brand Header */}
       <div>
         <div className="h-16 flex items-center px-6 border-b border-slate-800 gap-3">
-          <Link href="/" className="w-9 h-9 rounded-lg bg-teal-600 flex items-center justify-center text-white font-bold text-lg shadow-sm hover:bg-teal-500 transition-colors">
+          <Link href="/" className="w-9 h-9 rounded-lg bg-pink-600 flex items-center justify-center text-white font-bold text-lg shadow-sm hover:bg-pink-500 transition-colors">
             <span className="font-sans font-black">M</span>
           </Link>
           <div className="flex flex-col">
-            <Link href="/dashboard" className="font-bold text-base tracking-tight text-white leading-tight hover:text-teal-300 transition-colors">
+            <Link href="/dashboard" className="font-bold text-base tracking-tight text-white leading-tight hover:text-pink-300 transition-colors">
               MedMatch AI
             </Link>
             <span className="text-xs text-slate-400 font-medium">Hospital Staff Portal</span>
@@ -107,7 +106,7 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
 
         {/* Hospital Context Indicator */}
         <div className="px-6 py-3 bg-slate-950/50 border-b border-slate-800/80 flex items-center gap-2">
-          <Building2 className="w-4 h-4 text-teal-400 shrink-0" />
+          <Building2 className="w-4 h-4 text-pink-400 shrink-0" />
           <div className="truncate">
             <p className="text-xs font-semibold text-slate-200 truncate">
               {user?.hospitalName || 'CityCare General Hospital'}
@@ -131,7 +130,7 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
                 onClick={onCloseMobile}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
                   active
-                    ? 'bg-teal-600 text-white font-semibold shadow-sm'
+                    ? 'bg-pink-600 text-white font-semibold shadow-sm'
                     : 'text-slate-300 hover:bg-slate-800 hover:text-white'
                 }`}
               >
@@ -154,7 +153,7 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
         </Link>
 
         <div className="flex items-center gap-3 pt-2 border-t border-slate-800/60">
-          <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-teal-300">
+          <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-pink-300">
             {user?.avatarInitials || 'ST'}
           </div>
           <div className="truncate">

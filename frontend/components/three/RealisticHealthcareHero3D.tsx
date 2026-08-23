@@ -288,7 +288,7 @@ export function RealisticHealthcareHero3D() {
       {/* Floating 3D Telemetry Overlay Card: Verified Supplier */}
       <div className="absolute bottom-6 right-4 sm:bottom-10 sm:right-6 bg-white/95 backdrop-blur-md rounded-xl p-3.5 sm:p-4 border border-slate-200/90 shadow-xl shadow-slate-900/5 max-w-[220px] sm:max-w-[250px] transform hover:scale-105 transition-all duration-300 pointer-events-none">
         <div className="flex items-center justify-between mb-1.5">
-          <span className="text-[10px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
+          <span className="text-[10px] font-bold text-pink-700 bg-pink-50 px-2 py-0.5 rounded border border-pink-200">
             x402 UNLOCKED
           </span>
           <span className="text-[10px] text-slate-400">Algorand TestNet</span>
@@ -301,16 +301,16 @@ export function RealisticHealthcareHero3D() {
           </div>
           <div>
             <span className="text-slate-400 text-[10px]">AI Score</span>
-            <p className="font-bold text-teal-700">94.6 / 100</p>
+            <p className="font-bold text-pink-700">94.6 / 100</p>
           </div>
         </div>
       </div>
 
       {/* Floating 3D Telemetry Badge: Algorand USDC Micropayment */}
       <div className="absolute bottom-6 left-4 sm:bottom-10 sm:left-8 bg-slate-900/90 text-white backdrop-blur-md rounded-lg px-3 py-1.5 border border-slate-700 shadow-lg flex items-center gap-2 text-[11px] pointer-events-none">
-        <span className="w-2 h-2 rounded-full bg-teal-400 animate-ping" />
+        <span className="w-2 h-2 rounded-full bg-pink-400 animate-ping" />
         <span className="font-medium text-slate-300">x402 Micropayment:</span>
-        <span className="font-bold text-teal-300">0.02 USDC Settled</span>
+        <span className="font-bold text-pink-300">0.02 USDC Settled</span>
       </div>
     </div>
   );

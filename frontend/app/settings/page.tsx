@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import {
@@ -298,8 +298,8 @@ export default function SettingsPage() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-600">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
+                    <span className="w-2 h-2 rounded-full bg-slate-400" />
                     <span>Healthy</span>
                   </div>
                 </div>
@@ -319,8 +319,8 @@ export default function SettingsPage() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-600">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
+                    <span className="w-2 h-2 rounded-full bg-slate-400" />
                     <span>Healthy</span>
                   </div>
                 </div>

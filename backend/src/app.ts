@@ -24,6 +24,8 @@ import dataSourceRoutes from './routes/data-sources.routes';
 
 import paidServiceRoutes from './routes/paid-service.routes';
 import staffRoutes from './routes/staff.routes';
+import mcpRoutes from './routes/mcp.routes';
+import architectureRoutes from './routes/architecture.routes';
 
 export function createApp(): Application {
   const app = express();
@@ -90,6 +92,9 @@ export function createApp(): Application {
   app.use('/api', researchRoutes);
   app.use('/api/data-sources', dataSourceRoutes);
   app.use('/api/staff', staffRoutes);
+  app.use('/api/mcp', mcpRoutes);
+  app.use('/mcp', mcpRoutes);
+  app.use('/api', architectureRoutes);
 
 
   // 404 Route handler

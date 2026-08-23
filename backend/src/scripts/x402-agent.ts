@@ -11,7 +11,7 @@ async function runAgentCli() {
   const result = await agentService.executeAgentRun(
     'hospital-citycare-001',
     'cli-procurement-manager',
-    'inv-gloves-001'
+    'inv-surgical-gloves-002'
   );
 
   console.log(`✓ Run ID: ${result.run.id}`);

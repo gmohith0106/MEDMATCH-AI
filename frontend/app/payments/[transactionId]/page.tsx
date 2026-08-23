@@ -67,7 +67,7 @@ export default function PaymentDetailPage() {
   const handlePayNow = async () => {
     if (!payment || isProcessing) return;
     setIsProcessing(true);
-    setFeedback({ text: 'Processing 0.02 USDC payment on Algorand TestNet...', type: 'info' });
+    setFeedback({ text: 'Processing 0.001 USDC payment on Algorand TestNet...', type: 'info' });
 
     try {
       const result = await payPendingPayment(payment.id);
@@ -124,7 +124,7 @@ export default function PaymentDetailPage() {
 
   if (!payment) {
     return (
-      <div className="max-w-lg mx-auto my-12 bg-white rounded-xl border border-[#DDE9E2] p-8 text-center space-y-4 shadow-sm">
+      <div className="max-w-lg mx-auto my-12 bg-white rounded-xl border border-[#cbd5e1] p-8 text-center space-y-4 shadow-sm">
         <AlertCircle className="w-10 h-10 text-rose-500 mx-auto" />
         <h2 className="text-base font-bold text-slate-900">Payment Record Not Found</h2>
         <p className="text-xs text-slate-600">
@@ -174,7 +174,7 @@ export default function PaymentDetailPage() {
               href={loraUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#DDE9E2] bg-white text-xs font-semibold text-teal-700 hover:bg-teal-50 shadow-xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#cbd5e1] bg-white text-xs font-semibold text-teal-700 hover:bg-teal-50 shadow-xs transition-colors"
             >
               <ExternalLink className="w-3.5 h-3.5 text-teal-600" />
               <span>View on Lora</span>
@@ -214,7 +214,7 @@ export default function PaymentDetailPage() {
       )}
 
       {/* Main Status Header Card */}
-      <div className="bg-white rounded-xl border border-[#DDE9E2] p-6 sm:p-8 shadow-sm space-y-6">
+      <div className="bg-white rounded-xl border border-[#cbd5e1] p-6 sm:p-8 shadow-sm space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
           <div className="flex items-center gap-3.5">
             <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-xs flex-shrink-0 ${
@@ -277,7 +277,7 @@ export default function PaymentDetailPage() {
               {formatUsdcAmount(payment.amount)}
             </div>
             <div className="text-xs font-bold text-teal-700">
-              0.02 USDC Micropayment
+              0.001 USDC Micropayment
             </div>
           </div>
         </div>
@@ -285,7 +285,7 @@ export default function PaymentDetailPage() {
         {/* Product & Supplier Details */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
           {/* Product */}
-          <div className="p-4 rounded-lg bg-[#E8F1EC]/40 border border-[#DDE9E2] space-y-1.5">
+          <div className="p-4 rounded-lg bg-[#f1f5f9]/40 border border-[#cbd5e1] space-y-1.5">
             <div className="flex items-center gap-1.5 font-bold text-slate-700">
               <Package className="w-3.5 h-3.5 text-teal-700" />
               <span>Target Product</span>
@@ -295,7 +295,7 @@ export default function PaymentDetailPage() {
           </div>
 
           {/* Supplier */}
-          <div className="p-4 rounded-lg bg-[#E8F1EC]/40 border border-[#DDE9E2] space-y-1.5">
+          <div className="p-4 rounded-lg bg-[#f1f5f9]/40 border border-[#cbd5e1] space-y-1.5">
             <div className="flex items-center gap-1.5 font-bold text-slate-700">
               <Building2 className="w-3.5 h-3.5 text-teal-700" />
               <span>Recommended Supplier</span>
@@ -309,7 +309,7 @@ export default function PaymentDetailPage() {
         <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-2.5 text-xs">
           <div className="flex items-center justify-between pb-2 border-b border-slate-200">
             <span className="text-slate-500 font-semibold">Hospital:</span>
-            <span className="font-bold text-slate-900">{payment.hospitalName || 'CityCare General Hospital'}</span>
+            <span className="font-bold text-slate-900">{(payment as any).hospitalName || payment.hospitalId || 'CityCare General Hospital'}</span>
           </div>
 
           <div className="flex items-center justify-between pb-2 border-b border-slate-200">
@@ -319,7 +319,7 @@ export default function PaymentDetailPage() {
 
           <div className="flex items-center justify-between pb-2 border-b border-slate-200">
             <span className="text-slate-500 font-semibold">Asset & Amount:</span>
-            <span className="font-bold text-teal-800">0.02 USDC</span>
+            <span className="font-bold text-teal-800">0.001 USDC</span>
           </div>
 
           <div className="flex items-center justify-between pb-2 border-b border-slate-200">
@@ -377,7 +377,7 @@ export default function PaymentDetailPage() {
                 </>
               ) : (
                 <>
-                  <span>Pay 0.02 USDC</span>
+                  <span>Pay 0.001 USDC</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}

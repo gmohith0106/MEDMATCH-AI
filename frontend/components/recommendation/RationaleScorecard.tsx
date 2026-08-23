@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { ShieldCheck, TrendingUp, Clock, PackageCheck } from 'lucide-react';
@@ -8,9 +8,9 @@ export function RationaleScorecard() {
     {
       title: 'Price Evaluation',
       status: 'Strong',
-      metric: '₹9.50 / unit',
+      metric: 'â‚¹9.50 / unit',
       badgeClass: 'bg-white text-[#24324a] border border-[#ffc8d3]',
-      description: 'Competitive tier-1 volume pricing yielding ₹420 hospital budget savings vs market median.',
+      description: 'Competitive tier-1 volume pricing yielding â‚¹420 hospital budget savings vs market median.',
       icon: TrendingUp,
     },
     {
@@ -100,7 +100,7 @@ export function RationaleScorecard() {
             Transparent Decision Rationale
           </h5>
           <p className="text-[11px] text-[#667085] leading-relaxed">
-            MedMatch AI does not automatically select the lowest nominal cost vendor if the lead time introduces clinical stockout risks. Although CareMed offers ₹8.90/unit, their 6-day lead time exceeds the 2.9-day hospital safety horizon. MediSupply was selected as the optimal multi-criteria solution.
+            MedMatch AI does not automatically select the lowest nominal cost vendor if the lead time introduces clinical stockout risks. Although CareMed offers â‚¹8.90/unit, their 6-day lead time exceeds the 2.9-day hospital safety horizon. MediSupply was selected as the optimal multi-criteria solution.
           </p>
         </div>
       </div>

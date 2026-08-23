@@ -51,12 +51,22 @@ export function initializeFirebase(): admin.app.App {
         authHost: FIREBASE_AUTH_EMULATOR_HOST
       });
     } else {
-      // Local fallback configuration with exact Realtime Database URL
+      logger.warn('No Firebase credentials provided and not in emulator mode. Skipping Firebase initialization to avoid ADC errors.');
+      // Create a dummy app to avoid crashing if admin.app() is called
+      // Or just do nothing if initialized = true isn't strict.
+      // Wait, firebaseApp is exported. We must return an app.
+      // Better to initialize with dummy credential.
       admin.initializeApp({
         projectId: FIREBASE_PROJECT_ID || 'medmatch-ai-dbd96',
-        databaseURL
+        databaseURL,
+        credential: {
+          getAccessToken: () => Promise.resolve({
+            access_token: 'mock-token-for-demo-mode',
+            expires_in: 3600
+          })
+        }
       });
-      logger.info('Firebase Admin SDK initialized with Realtime Database URL', { databaseURL });
+      logger.info('Firebase initialized with dummy credentials to prevent ADC spam');
     }
 
     initialized = true;

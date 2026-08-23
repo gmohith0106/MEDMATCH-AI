@@ -96,7 +96,7 @@ export interface X402PaymentRecord {
   confirmedRound?: number;
   round?: number;
   blockNumber?: number;
-  verified?: boolean;
+  verified: boolean;
   verifiedAt?: string;
   settledAt?: string;
   explorerUrl?: string;

@@ -90,7 +90,7 @@ export class PaymentController {
         userId,
         runId: req.body.runId,
         agentRunId: req.body.agentRunId || req.body.runId,
-        amount: 0.02,
+        amount: 0.001,
         asset: 'USDC',
         currency: 'USD',
         purpose: req.body.purpose || 'Autonomous Agent Tier-1 Supplier Intelligence Oracle Fee',
