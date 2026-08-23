@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import { useDemo } from '@/context/DemoContext';
@@ -86,17 +86,11 @@ export function X402PaymentModal() {
       const rcvr = receiverAddress || 'IWOSB3QY3C3OUMV74HMWCY4HN76DBP4EN2SEMAKYK4U4LEINNT64RZFNCU';
 
       // Get params
-      const paramsRes = await fetch('https://testnet-api.algonode.cloud/v2/transactions/params');
-      const paramsObj = await paramsRes.json();
-      const suggestedParams: algosdk.SuggestedParams = {
-        fee: paramsObj.fee,
-        genesisHash: paramsObj['genesis-hash'],
-        genesisID: paramsObj['genesis-id'],
-        firstValid: paramsObj['last-round'],
-        lastValid: paramsObj['last-round'] + 1000,
-        minFee: paramsObj['min-fee'],
-        flatFee: false,
-      };
+      const algodToken = '';
+      const algodServer = 'https://testnet-api.algonode.cloud';
+      const algodPort = '';
+      const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
+      const suggestedParams = await algodClient.getTransactionParams().do();
 
       const txn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
         sender,
@@ -110,20 +104,8 @@ export function X402PaymentModal() {
       const signedTxn = await wallet!.signTransaction([txGroup]);
 
       // Submit to network
-      const submitRes = await fetch('https://testnet-api.algonode.cloud/v2/transactions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-binary',
-        },
-        body: signedTxn[0] as unknown as BodyInit
-      });
-
-      if (!submitRes.ok) {
-        throw new Error('Failed to submit transaction to Algorand network');
-      }
-
-      const txResponse = await submitRes.json();
-      const txId = txResponse.txId;
+      const sendTxRes = await algodClient.sendRawTransaction(signedTxn[0]).do();
+      const txId = sendTxRes.txId;
 
       // Tell backend we submitted it
       await submitPayment({
