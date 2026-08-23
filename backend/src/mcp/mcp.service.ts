@@ -100,7 +100,7 @@ export class McpService {
           properties: {
             amountUsd: {
               type: 'number',
-              description: 'Payment amount in USD (default: 0.02).'
+              description: 'Payment amount in USD (default: 0.001).'
             },
             purpose: {
               type: 'string',
@@ -250,7 +250,7 @@ export class McpService {
 
         return {
           status: 'PAYMENT_SETTLED',
-          amount: args.amountUsd || 0.02,
+          amount: args.amountUsd || 0.001,
           asset: 'USDC',
           network: 'Algorand TestNet',
           protocol: 'x402 Machine-to-Machine',

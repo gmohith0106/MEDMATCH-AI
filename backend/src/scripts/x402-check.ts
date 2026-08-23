@@ -97,7 +97,7 @@ async function runPreflightCheck() {
     resource: '/api/paid/supplier-intelligence',
     network: ALGORAND_TESTNET_CAIP2,
     asset: 'USDC',
-    amount: 0.02,
+    amount: 0.001,
     payTo: receiver
   });
   if (sampleEval.approved) {
@@ -108,7 +108,7 @@ async function runPreflightCheck() {
   }
 
   // 8. Protected Resource Configuration
-  console.log(`✓ Protected Resource Endpoint ....... PASS (${env.X402_ENDPOINT} | Price: $0.02 USDC | ASA: ${USDC_TESTNET_ASA_ID})`);
+  console.log(`✓ Protected Resource Endpoint ....... PASS (${env.X402_ENDPOINT} | Price: $0.001 USDC | ASA: ${USDC_TESTNET_ASA_ID})`);
 
   // 9. Database & Hospital Dataset
   console.log('✓ Storage & Hospital Directory ...... PASS (In-Memory Store with 30,273 authoritative hospital records loaded)');

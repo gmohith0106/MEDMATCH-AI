@@ -351,7 +351,7 @@ export class AgentService {
         resource: env.X402_ENDPOINT,
         network: env.ALGORAND_NETWORK || ALGORAND_TESTNET_CAIP2,
         asset: env.X402_PAYMENT_ASSET || 'USDC',
-        amount: 0.02,
+        amount: 0.001,
         payTo: env.ALGORAND_RECEIVER_ADDRESS || '',
         procurementRunId: runId,
         hospitalId
@@ -361,7 +361,7 @@ export class AgentService {
         await this.recordEvent(
           runId,
           'SPEND_POLICY_APPROVED',
-          `Spend policy approved payment of $0.02 USDC on Algorand TestNet.`
+          `Spend policy approved payment of $0.001 USDC on Algorand TestNet.`
         );
       } else {
         await this.recordEvent(
@@ -396,7 +396,7 @@ export class AgentService {
 
         await this.recordStep(runId, 5, 'X402_PAYMENT', 'COMPLETED', {
           protocol: 'x402',
-          amount: 0.02,
+          amount: 0.001,
           asset: 'USDC',
           status: 'PAYMENT_SETTLED',
           transactionId: purchaseResult.transactionId
@@ -404,7 +404,7 @@ export class AgentService {
         await this.recordEvent(
           runId,
           'X402_PAYMENT_SETTLED',
-          `x402 payment settled ($0.02 USDC) on Algorand TestNet. Transaction ID: ${purchaseResult.transactionId}`
+          `x402 payment settled ($0.001 USDC) on Algorand TestNet. Transaction ID: ${purchaseResult.transactionId}`
         );
       } else {
         // Fallback to certified repository suppliers if payer credentials are awaiting funding in dev
@@ -435,7 +435,7 @@ export class AgentService {
             forecastDemand: primaryForecast.estimatedDemand,
             expectedDeficit: Math.max(0, primaryForecast.estimatedDemand - targetItem.currentStock)
           },
-          amount: 0.02,
+          amount: 0.001,
           asset: 'USDC',
           currency: 'USD',
           protocol: 'x402',
@@ -453,7 +453,7 @@ export class AgentService {
 
         await this.recordStep(runId, 5, 'X402_PAYMENT', 'COMPLETED', {
           protocol: 'x402',
-          amount: 0.02,
+          amount: 0.001,
           asset: 'USDC',
           status: purchaseResult.statusCode === 402 ? 'PAYMENT_REQUIRED' : 'CONFIGURATION_REQUIRED',
           notice: purchaseResult.message
@@ -569,7 +569,7 @@ export class AgentService {
       await archRepo.insertLedger({
         txn_id: purchaseResult.transactionId || 'QOOBRVQMX4HW5QZ2EGLQDQCQTKRF3UP3JKDGKYPCXMI6AVV35KQA',
         endpoint: '/api/paid/quote',
-        amount: 0.02,
+        amount: 0.001,
         purpose: `Supplier Intelligence Oracle Fee for ${targetItem.name}`
       });
 

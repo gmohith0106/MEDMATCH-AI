@@ -38,7 +38,7 @@ export class MockAlgorandService implements AlgorandService {
       sender: 'ALGO7W2K6XJ4PL9QNZR8YV1M3TB5D0E4G2F9C7H1',
       receiver: 'ALGO9Z3X4Y5W6V7U8T9S0R1Q2P3O4N5M6L7K8J9I',
       amountMicroAlgos: 20000,
-      amountAlgos: 0.02,
+      amountAlgos: 0.001,
       timestamp: getCurrentIsoDate(),
       explorerUrl: this.getExplorerUrl(txId)
     };
@@ -54,7 +54,7 @@ export class MockAlgorandService implements AlgorandService {
       sender: 'ALGO7W2K6XJ4PL9QNZR8YV1M3TB5D0E4G2F9C7H1',
       receiver: 'ALGO9Z3X4Y5W6V7U8T9S0R1Q2P3O4N5M6L7K8J9I',
       amountMicroAlgos: 20000,
-      amountAlgos: 0.02,
+      amountAlgos: 0.001,
       timestamp: getCurrentIsoDate(),
       explorerUrl: this.getExplorerUrl(txId)
     };

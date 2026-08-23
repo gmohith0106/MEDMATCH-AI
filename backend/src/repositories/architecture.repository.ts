@@ -158,7 +158,7 @@ export class ArchitectureRepository {
         id: 'ledg-003',
         txn_id: 'ESE4WLMULXSMHMISDRYU7YLS4E7X6YDNJAGFH55K2HXGFQITZ2TA',
         endpoint: '/api/paid/reliability-score',
-        amount: 0.02,
+        amount: 0.001,
         asset: 'USDC',
         network: 'Algorand TestNet',
         confirmed_round: 190,

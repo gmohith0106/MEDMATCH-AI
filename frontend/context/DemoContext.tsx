@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { InventoryItem, NewInventoryItemInput } from '@/types/inventory';
@@ -158,7 +158,7 @@ interface DemoContextType {
   currentPayment: X402PaymentRecord | null;
   setCurrentPayment: (pay: X402PaymentRecord | null) => void;
   startAgentRun: () => void;
-  continuePaymentFlow: () => Promise<void>;
+  continuePaymentFlow: (txId?: string) => Promise<void>;
   confirmApprovalFlow: () => Promise<void>;
   resetAgentRun: () => void;
 }
@@ -632,7 +632,7 @@ export function DemoProvider({ children }: { children: React.ReactNode }) {
     timeoutsRef.current.push(t5);
   };
 
-  const continuePaymentFlow = async () => {
+  const continuePaymentFlow = async (txId?: string) => {
     setIsPaymentModalOpen(false);
     clearAllAgentTimeouts();
     const preset = clinicalPresets[activePresetKey] || clinicalPresets.n95;
@@ -646,17 +646,19 @@ export function DemoProvider({ children }: { children: React.ReactNode }) {
 
     addAgentEvent('Authorizing Algorand micro-settlement...', 'Authorizing $0.001 micropayment payload to supplier gateway...', 'payment', 5);
 
-    // Fetch genuine live on-chain Algorand TestNet transaction
-    let realTxId = 'QOOBRVQMX4HW5QZ2EGLQDQCQTKRF3UP3JKDGKYPCXMI6AVV35KQA';
+    // Use passed txId or fetch a live one as fallback
+    let realTxId = txId || 'QOOBRVQMX4HW5QZ2EGLQDQCQTKRF3UP3JKDGKYPCXMI6AVV35KQA';
     let realRound = 38472910;
-    try {
-      const liveTx = await fetchLiveConfirmedTestnetTxId();
-      if (liveTx && liveTx.id) {
-        realTxId = liveTx.id;
-        realRound = liveTx.round;
+    if (!txId) {
+      try {
+        const liveTx = await fetchLiveConfirmedTestnetTxId();
+        if (liveTx && liveTx.id) {
+          realTxId = liveTx.id;
+          realRound = liveTx.round;
+        }
+      } catch {
+        // fallback to validated testnet hash
       }
-    } catch {
-      // fallback to validated testnet hash
     }
 
     // Refresh payments list from backend

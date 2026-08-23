@@ -210,7 +210,7 @@ export class X402ServerService {
           score: 94.6,
           availability: '5,000+ units in stock'
         },
-        amount: Number(result.amount) ? Number(result.amount) / 1_000_000 : 0.02,
+        amount: Number(result.amount) ? Number(result.amount) / 1_000_000 : 0.001,
         asset: 'USDC',
         currency: 'USD',
         protocol: 'x402',
@@ -260,7 +260,7 @@ export class X402ServerService {
       {
         scheme: 'exact',
         payTo,
-        price: env.X402_PAYMENT_AMOUNT || '$0.02',
+        price: env.X402_PAYMENT_AMOUNT || '$0.001',
         network: ALGORAND_TESTNET_CAIP2 as `${string}:${string}`,
         maxTimeoutSeconds: 900
       }

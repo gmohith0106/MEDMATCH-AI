@@ -131,7 +131,7 @@ export class PaidServiceController {
 
       await PaidServiceController.archRepo.insertLedger({
         endpoint: '/api/paid/order',
-        amount: 0.02,
+        amount: 0.001,
         purpose: `Autonomous Procurement Order: ${order.id}`
       });
 
@@ -149,7 +149,7 @@ export class PaidServiceController {
   }
 
   /**
-   * Protected x402 Endpoint: GET /api/paid/reliability-score (Priced at $0.02)
+   * Protected x402 Endpoint: GET /api/paid/reliability-score (Priced at $0.001)
    * Computes reliability from historical paid settled orders in reliability_log.
    */
   public static async getPaidReliabilityScore(req: Request, res: Response, next: NextFunction): Promise<void> {
@@ -159,7 +159,7 @@ export class PaidServiceController {
 
       await PaidServiceController.archRepo.insertLedger({
         endpoint: '/api/paid/reliability-score',
-        amount: 0.02,
+        amount: 0.001,
         purpose: `Supplier Trust Registry Audit: ${supplierId}`
       });
 
@@ -189,7 +189,7 @@ export class PaidServiceController {
 
       await PaidServiceController.archRepo.insertLedger({
         endpoint: '/api/paid/supplier-intelligence',
-        amount: 0.02,
+        amount: 0.001,
         purpose: 'Supplier Intelligence Matrix Query'
       });
 

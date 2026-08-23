@@ -12,6 +12,6 @@ export const USDC_TESTNET_ASA_ID = '10458941';
 export const USDC_MAINNET_ASA_ID = '31566704';
 export const USDC_DECIMALS = 6;
 
-export const DEFAULT_X402_PAYMENT_AMOUNT = '$0.02';
+export const DEFAULT_X402_PAYMENT_AMOUNT = '$0.001';
 export const DEFAULT_X402_PAYMENT_ASSET = 'USDC';
 export const DEFAULT_X402_ENDPOINT = '/api/paid/supplier-intelligence';

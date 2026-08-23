@@ -37,7 +37,7 @@ const envSchema = z.object({
   X402_ENDPOINT: z.string().default('/api/paid/supplier-intelligence'),
   X402_FACILITATOR_URL: z.string().default('https://facilitator.goplausible.xyz'),
   X402_API_KEY: z.string().optional(),
-  X402_PAYMENT_AMOUNT: z.string().default('$0.02'),
+  X402_PAYMENT_AMOUNT: z.string().default('$0.001'),
   X402_PAYMENT_ASSET: z.string().default('USDC'),
 
   // Algorand Node & Indexer Configuration

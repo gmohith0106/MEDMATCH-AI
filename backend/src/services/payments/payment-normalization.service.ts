@@ -52,7 +52,7 @@ export class PaymentNormalizationService {
       blockNumber: payment.blockNumber || payment.confirmedRound || payment.round,
       verified: isVerified,
       verifiedAt: payment.verifiedAt,
-      amount: payment.amount || 0.02,
+      amount: payment.amount || 0.001,
       asset: payment.asset || 'USDC',
       network: payment.network || 'Algorand TestNet',
       payerPublicAddress: payment.payerPublicAddress || payment.senderAddress,

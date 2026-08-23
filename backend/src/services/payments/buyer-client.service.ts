@@ -100,7 +100,7 @@ export class X402BuyerClientService {
       resource: resourcePath,
       network: env.ALGORAND_NETWORK || ALGORAND_TESTNET_CAIP2,
       asset: env.X402_PAYMENT_ASSET || 'USDC',
-      amount: 0.02,
+      amount: 0.001,
       payTo: env.ALGORAND_RECEIVER_ADDRESS || '',
       procurementRunId: params.procurementRunId,
       hospitalId: params.hospitalId
@@ -117,7 +117,7 @@ export class X402BuyerClientService {
       };
     }
 
-    logger.info(`[SPEND_POLICY_APPROVED] Spend policy approved: $0.02 USDC on Algorand TestNet`);
+    logger.info(`[SPEND_POLICY_APPROVED] Spend policy approved: $0.001 USDC on Algorand TestNet`);
 
     // 2. Check if agent signer mnemonic is configured
     if (!this.isSignerConfigured()) {
@@ -264,7 +264,7 @@ export class X402BuyerClientService {
           supplierScore: params.supplier?.score || 94.6,
           supplier: params.supplier,
 
-          amount: 0.02,
+          amount: 0.001,
           asset: 'USDC',
           currency: 'USD',
           protocol: 'x402',

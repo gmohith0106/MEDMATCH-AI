@@ -18,7 +18,7 @@ router.post('/payments/submit', optionalAuth, PaymentController.submitPayment);
 router.post('/payments/verify', optionalAuth, PaymentController.verifyPayment);
 router.post('/payments/:id/verify', optionalAuth, PaymentController.verifyPayment);
 
-// Pending payment execution (Pay 0.02 USDC): ADMIN, PROCUREMENT_STAFF only
+// Pending payment execution (Pay 0.001 USDC): ADMIN, PROCUREMENT_STAFF only
 router.post('/payments/:id/pay', optionalAuth, PaymentController.payPayment);
 router.post('/payments/pay', optionalAuth, PaymentController.payPayment);
 

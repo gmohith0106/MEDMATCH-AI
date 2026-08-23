@@ -158,7 +158,7 @@ export class MemoryStore {
         userId: 'user-rachel-001',
         runId: 'run-initial',
         type: 'PAYMENT_EXECUTED',
-        message: '$0.02 USD settlement confirmed on Algorand TestNet (TXN: ALGO-TXN-79421).',
+        message: '$0.001 USD settlement confirmed on Algorand TestNet (TXN: ALGO-TXN-79421).',
         createdAt: now,
         metadata: { paymentId: 'PAY-001' }
       }

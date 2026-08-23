@@ -21,7 +21,7 @@ export interface X402PaymentRequirement {
   scheme: 'exact' | 'upto';
   network: string; // e.g. 'algorand:SGO1GKSzyE7IEPItTxCByw9x8FmnrCDe'
   asset: string; // 'USDC' (ASA ID: 10458941)
-  amount: number; // e.g. 0.02 USD
+  amount: number; // e.g. 0.001 USD
   amountRaw: string; // integer atomic units e.g. '20000' (micro-USDC)
   payTo: string; // Algorand receiver address
   facilitatorUrl?: string;

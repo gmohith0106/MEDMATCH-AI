@@ -77,7 +77,7 @@ export class PaidServiceController {
         agentRunId: runId,
         hospitalId,
         userId,
-        amount: 0.02,
+        amount: 0.001,
         asset: 'ALGO',
         currency: 'USD',
         resource: '/api/paid/supplier-intelligence',

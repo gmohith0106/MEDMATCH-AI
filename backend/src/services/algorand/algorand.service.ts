@@ -189,7 +189,19 @@ export class AlgorandServiceImpl implements AlgorandService {
     expectedReceiver?: string,
     expectedMinAmountAlgos?: number
   ): Promise<AlgorandTransactionResult> {
-    const tx = await this.getTransaction(txId);
+    let tx: any = null;
+    let retries = 0;
+    
+    // Retry loop to handle Indexer latency on Algorand TestNet
+    while (retries < 6) {
+      tx = await this.getTransaction(txId);
+      if (tx && tx.status === 'CONFIRMED') {
+        break;
+      }
+      logger.info(`[AlgorandService] Tx ${txId} not yet confirmed by indexer, retrying (${retries + 1}/6)...`);
+      await new Promise(r => setTimeout(r, 2000));
+      retries++;
+    }
 
     if (!tx || tx.status !== 'CONFIRMED') {
       throw new AppError(
