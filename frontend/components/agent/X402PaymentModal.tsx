@@ -106,6 +106,12 @@ export function X402PaymentModal() {
       const sendTxRes = await algodClient.sendRawTransaction(signedTxn[0]).do();
       const txId = sendTxRes.txid;
 
+      // Wait for confirmation (up to 4 rounds)
+      await algosdk.waitForConfirmation(algodClient, txId, 4);
+      
+      // Give the Algorand Indexer 2 seconds to index the block
+      await new Promise(res => setTimeout(res, 2000));
+
       // Tell backend we submitted it
       await submitPayment({
          paymentId: targetPaymentId,
