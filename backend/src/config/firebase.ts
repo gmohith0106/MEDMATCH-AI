@@ -92,3 +92,13 @@ export const hasDatabaseCredentials = Boolean(
   ((env.FIREBASE_PROJECT_ID && env.FIREBASE_CLIENT_EMAIL && env.FIREBASE_PRIVATE_KEY && !env.FIREBASE_PRIVATE_KEY.includes('...')) ||
   env.FIREBASE_DATABASE_EMULATOR_HOST)
 );
+
+if (!hasDatabaseCredentials) {
+  try {
+    rtdb.goOffline();
+    logger.info('Firebase Realtime Database offline mode activated (using local memory store)');
+  } catch (err) {
+    logger.debug('Failed to set RTDB offline', err);
+  }
+}
+
