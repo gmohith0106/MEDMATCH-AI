@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -93,8 +93,8 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
       {/* Brand Header */}
       <div>
         <div className="h-16 flex items-center px-6 border-b border-slate-800 gap-3">
-          <Link href="/" className="w-9 h-9 rounded-lg bg-pink-600 flex items-center justify-center text-white font-bold text-lg shadow-sm hover:bg-pink-500 transition-colors">
-            <span className="font-sans font-black">M</span>
+          <Link href="/" className="w-9 h-9 rounded-lg overflow-hidden border border-pink-500/30 flex items-center justify-center bg-slate-950 shadow-sm hover:border-pink-400 transition-colors shrink-0">
+            <img src="/logo.png" alt="MedMatch AI Logo" className="w-full h-full object-cover" />
           </Link>
           <div className="flex flex-col">
             <Link href="/dashboard" className="font-bold text-base tracking-tight text-white leading-tight hover:text-pink-300 transition-colors">
